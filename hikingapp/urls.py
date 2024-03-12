@@ -18,8 +18,9 @@ from django.contrib import admin
 from django.urls import path
 
 from trip import views
+from trip.views import TripList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.get_page),
+    path('', TripList.as_view()),
 ]
