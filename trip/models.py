@@ -9,13 +9,13 @@ from tags.models import Tag
 class Trip(models.Model):
     title = models.CharField(max_length=255, verbose_name='Title')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='Slug')
-    title_photo = models.ImageField(upload_to="photos/%Y/%m/%d/title-", default=None, blank=True,
+    title_photo = models.ImageField(upload_to="photos/%Y/%m/%d/", default=None, blank=True, null=True,
                                     verbose_name='Title_photo')
     content = models.TextField(blank=True, verbose_name='Description')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Create time')
     time_update = models.DateTimeField(auto_now=True, verbose_name='Update time')
     published = models.BooleanField(verbose_name='Status')
-    photo = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, blank=True, verbose_name='Photo')
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d', default=None, blank=True, null=True, verbose_name='Photo')
 
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='trips',
                                  verbose_name='Categories')
