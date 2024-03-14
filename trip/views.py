@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, TemplateView, DetailView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, TemplateView, DetailView, CreateView
 
 from trip.models import Trip
 
@@ -26,8 +27,16 @@ class TripList(ListView):
 class ShowTrip(DetailView):
     model = Trip
     template_name = 'trip/trip.html'
-    slug_url_kwarg = 'trip_slug'
     context_object_name = 'trip'
 
     # def get_object(self, queryset=None):
     #     return get_object_or_404(Trip.published, slug=self.kwargs[self.slug_url_kwarg])
+
+
+class AddTrip(CreateView):
+    model = Trip
+    fields = '__all__'
+    template_name = 'trip/add.html'
+
+    def get_success_url(self):
+        return reverse('trip', kwargs={'slug': self.object.slug})
