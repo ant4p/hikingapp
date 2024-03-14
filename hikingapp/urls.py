@@ -16,15 +16,18 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.defaults import page_not_found
 
 from hikingapp import settings
-from trip.views import TripList
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TripList.as_view()),
+    path('', include('trip.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = page_not_found

@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, TemplateView, DetailView
 
 from trip.models import Trip
 
@@ -21,3 +21,13 @@ class TripList(ListView):
 
     def get_queryset(self):
         return Trip.objects.all()
+
+
+class ShowTrip(DetailView):
+    model = Trip
+    template_name = 'trip/trip.html'
+    slug_url_kwarg = 'trip_slug'
+    context_object_name = 'trip'
+
+    # def get_object(self, queryset=None):
+    #     return get_object_or_404(Trip.published, slug=self.kwargs[self.slug_url_kwarg])
