@@ -21,7 +21,7 @@ class TripList(ListView):
     context_object_name = 'trips'
 
     def get_queryset(self):
-        return Trip.objects.all()
+        return Trip.objects.filter(published=True)
 
 
 class ShowTrip(DetailView):

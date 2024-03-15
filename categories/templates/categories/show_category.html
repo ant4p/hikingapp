@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for t in trips %}
+    <p>Name: {{t.title}}</p>
+    <p>Slug: {{t.slug}}</p>
+    <p>CATEgORY: {{t.category}}</p>
+    {% if t.title_photo %}
+            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

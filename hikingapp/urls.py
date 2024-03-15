@@ -25,6 +25,7 @@ from hikingapp import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('trip.urls')),
+    path('', include('categories.urls'))
 ]
 
 if settings.DEBUG:
