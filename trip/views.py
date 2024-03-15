@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 
 from trip.models import Trip
 
@@ -42,12 +42,18 @@ class AddTrip(CreateView):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
 
-
 class EditTrip(UpdateView):
     model = Trip
     fields = '__all__'
     template_name = 'trip/add.html'
+
     # success_url = reverse_lazy('home')
 
     def get_success_url(self):
         return reverse('trip', kwargs={'slug': self.object.slug})
+
+
+class DeleteTrip(DeleteView):
+    model = Trip
+    template_name = 'trip/delete.html'
+    success_url = reverse_lazy('home')
