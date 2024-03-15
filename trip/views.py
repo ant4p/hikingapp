@@ -42,6 +42,7 @@ class AddTrip(CreateView):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
 
+
 class EditTrip(UpdateView):
     model = Trip
     fields = '__all__'
