@@ -1,10 +1,10 @@
 from django.urls import path
 
-from categories.views import CategoryList
+from categories.views import  show_category
 
 urlpatterns = [
 
-    path('category/<slug:slug>/', CategoryList.as_view(), name='categories'),
+    path('category/<slug:slug>/', show_category, name='categories'),
 
 ]
 
