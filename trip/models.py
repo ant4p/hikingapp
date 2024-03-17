@@ -23,5 +23,8 @@ class Trip(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='traveler',
                              null=True, default=None)
 
+    class Meta:
+        db_table = 'trip'
+
     def __str__(self):
         return self.title

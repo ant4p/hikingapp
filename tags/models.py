@@ -6,5 +6,8 @@ class Tag(models.Model):
     tag = models.CharField(max_length=40, db_index=True)
     slug = models.SlugField(max_length=40, db_index=True, unique=True)
 
+    class Meta:
+        db_table = 'tag'
+
     def __str__(self):
         return self.tag
