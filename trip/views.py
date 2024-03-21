@@ -61,14 +61,14 @@ class AddTrip(CreateView):
     #     for photo in self.request.FILES.getlist('photo'):
     #         Trip.objects.create(photo=photo)
     #     return super().form_valid(form)
-    def post(self, request, *args, **kwargs):
-        if request.method == "POST":
-            photos = request.FILES.getlist('photo')
-
-            for f in photos:
-                info = Trip(photo=f)
-                info.save()
-        return render(request, 'trip', kwargs={'slug': self.object.slug})
+    # def post(self, request, *args, **kwargs):
+    #     if request.method == "POST":
+    #         photos = request.FILES.getlist('photo')
+    #
+    #         for f in photos:
+    #             info = Trip(photo=f)
+    #             info.save()
+    #     return render(request, 'trip', kwargs={'slug': self.object.slug})
 
     def get_success_url(self):
         return reverse('trip', kwargs={'slug': self.object.slug})

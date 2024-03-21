@@ -1,2 +1,4 @@
 .idea
 db.sqlite3
+/static/debug_toolbar/
+/static/admin/
