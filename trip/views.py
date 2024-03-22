@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView, FormView
 
+from trip.forms import AddTripForm
 # from trip.forms import AddTripForm
 from trip.models import Trip
 
@@ -35,9 +36,9 @@ class ShowTrip(DetailView):
 
 
 class AddTrip(CreateView):
-    # form_class = AddTripForm
-    model = Trip
-    fields = '__all__'
+    form_class = AddTripForm
+    # model = Trip
+    # fields = '__all__'
     template_name = 'trip/add.html'
 
     # context_object_name = 'trip'

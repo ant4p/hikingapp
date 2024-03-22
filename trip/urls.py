@@ -9,6 +9,5 @@ urlpatterns = [
     path('delete/<slug:slug>/', DeleteTrip.as_view(), name='delete'),
     path('trip/<slug:slug>/', ShowTrip.as_view(), name='trip'),
 
-
 ]
 
