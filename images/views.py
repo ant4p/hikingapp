@@ -11,6 +11,7 @@ class AddImages(FormView):
     form_class = AddImagesForm
     template_name = 'images/upload_image.html'
     success_url = reverse_lazy('home')
+    # context_object_name = 'images'
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()

@@ -14,7 +14,8 @@ class AddTripForm(forms.ModelForm):
             'title_photo',
             'content',
             'published',
-            'category'
+            'category',
+            'image',
         ]
         # widgets = {
         #     'photo': forms.ClearableFileInput(attrs={'allow_multiple_selected'})
