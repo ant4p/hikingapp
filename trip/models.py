@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from django.urls import reverse
+from slugify import slugify
+
 from categories.models import Category
 from images.models import Image
 from tags.models import Tag
@@ -31,3 +34,11 @@ class Trip(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('trip', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super(Trip, self).save(*args, **kwargs)
