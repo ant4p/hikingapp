@@ -9,6 +9,16 @@ from images.models import Image
 from tags.models import Tag
 
 
+def generate_unique_slug(klass, field):
+    main_slug = slugify(field)
+    unique_slug = main_slug
+    counter = 1
+    while klass.objects.filter(slug=unique_slug).exists():
+        unique_slug = f'{main_slug}-{counter}'
+        counter += 1
+    return unique_slug
+
+
 # Create your models here.
 class Trip(models.Model):
     title = models.CharField(max_length=255, verbose_name='Title')
@@ -40,5 +50,5 @@ class Trip(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = generate_unique_slug(Trip, self.title)
         return super(Trip, self).save(*args, **kwargs)
