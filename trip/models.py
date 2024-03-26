@@ -2,24 +2,13 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 from django.urls import reverse
-from slugify import slugify
 
 from categories.models import Category
 from images.models import Image
 from tags.models import Tag
+from trip.utils import generate_unique_slug
 
 
-def generate_unique_slug(klass, field):
-    main_slug = slugify(field)
-    unique_slug = main_slug
-    counter = 1
-    while klass.objects.filter(slug=unique_slug).exists():
-        unique_slug = f'{main_slug}-{counter}'
-        counter += 1
-    return unique_slug
-
-
-# Create your models here.
 class Trip(models.Model):
     title = models.CharField(max_length=255, verbose_name='Title')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='Slug')
