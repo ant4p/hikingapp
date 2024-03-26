@@ -4,7 +4,7 @@ from django.db import models
 from django.urls import reverse
 
 from categories.models import Category
-from images.models import Image
+
 from tags.models import Tag
 from trip.utils import generate_unique_slug
 
@@ -25,8 +25,6 @@ class Trip(models.Model):
     tag = models.ManyToManyField(Tag, blank=True, related_name='tags', verbose_name='Tags')
     user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='travelers',
                              null=True, default=None)
-    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='images', verbose_name='Images',
-                              null=True, default=None, blank=True)
 
     class Meta:
         db_table = 'trips'

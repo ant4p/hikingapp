@@ -31,8 +31,8 @@ class ShowTrip(DetailView):
     template_name = 'trip/trip.html'
     context_object_name = 'trip'
 
-    # def get_object(self, queryset=None):
-    #     return get_object_or_404(Trip.published, slug=self.kwargs[self.slug_url_kwarg])
+    def get_success_url(self):
+        return reverse('trip', kwargs={'slug': self.object.slug})
 
 
 class AddTrip(CreateView):

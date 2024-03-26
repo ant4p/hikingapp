@@ -26,4 +26,4 @@ class AddImagesForm(forms.Form):
 
     class Meta:
         model = Image
-        fields = ['image']
+        fields = ['image', 'travel']

@@ -2,13 +2,24 @@
 
 {% block content %}
 
-
     <p>Name: {{trip.title}}</p>
     <p>Slug: {{trip.slug}}</p>
     <p>CATEgORY: {{trip.category}}</p>
     {% if trip.title_photo %}
             <p><img class="img-article" src="{{ trip.title_photo.url }}" class="img" width="480" height="330"></p>
     {% endif %}
+
+    {% for i in trip.images.all %}
+    {% if i.image %}
+    <img class="img-article" src="{{ i.image.url }}" class="img" width="240" height="165">
+    {% endif %}
+    {% endfor %}
+    <p></p>
+    <p></p>
+    <p></p>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'image' %}">Load Photo</a>
+        </li>
 
 
 {% endblock %}
