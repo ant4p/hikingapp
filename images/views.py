@@ -29,6 +29,7 @@ class AddImages(FormView):
         for f in files:
             Image(image=f).save()
 
+
         return super().form_valid(form)
 
     # def get_success_url(self):
