@@ -18,6 +18,4 @@ class AddTripForm(forms.ModelForm):
             'content',
             'published',
             'category',
-
-
         ]

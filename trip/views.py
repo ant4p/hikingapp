@@ -33,7 +33,7 @@ class ShowTrip(DetailView):
     context_object_name = 'trip'
 
     def get_success_url(self):
-        return reverse('trip', kwargs={'slug': self.object.slug})
+        return reverse('trip', kwargs={'slug': self.slug})
 
 
 class AddTrip(CreateView):
@@ -52,6 +52,7 @@ class AddTrip(CreateView):
             return self.form_invalid(form)
 
     def form_valid(self, form):
+        """ Added 2 copy in DB. Problem in redefined method 'save' in model Trip?"""
         title = form.cleaned_data['title']
         date = form.cleaned_data['date']
         category = form.cleaned_data['category']
@@ -87,16 +88,28 @@ class EditTrip(UpdateView):
             return self.form_invalid(form)
 
     def form_valid(self, form):
+        """ through queryset? put slug field from copy object Trip from queryset? update this
+         trip object? create new images copy from cleaned_data files?"""
+        # upd_trip = Trip.objects.get(slug=slug)
+        # print(upd_trip)
+        title = form.cleaned_data['title']
+        date = form.cleaned_data['date']
+        category = form.cleaned_data['category']
+        title_photo = form.cleaned_data['title_photo']
+        content = form.cleaned_data['content']
+        published = form.cleaned_data['published']
 
-        print(form.cleaned_data)
+        update_trip = Trip.objects.update(
+            title=title,
+            date=date,
+            category=category,
+            title_photo=title_photo,
+            content=content,
+            published=published,
+        )
         files = form.cleaned_data["image"]
-        print(files)
-
-        title = form.cleaned_data["title"]
-        trip_update = Trip.objects.get(pk=1)
-        print(trip_update)
         for f in files:
-            Image.objects.update(image=f, travel=trip_update)
+            Image.objects.create(image=f, travel=update_trip)
         return super().form_valid(form)
 
     def get_success_url(self):

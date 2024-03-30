@@ -36,6 +36,6 @@ class Trip(models.Model):
         return reverse('trip', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        if not self.slug:
+        if not self.id and not self.slug:
             self.slug = generate_unique_slug(Trip, self.title)
         return super().save(*args, **kwargs)
