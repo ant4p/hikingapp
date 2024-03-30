@@ -9,7 +9,7 @@
             <p><img class="img-article" src="{{ trip.title_photo.url }}" class="img" width="480" height="330"></p>
     {% endif %}
 
-    {% for i in trip.images.all %}
+    {% for i in trip.imagesss.all %}
     {% if i.image %}
     <img class="img-article" src="{{ i.image.url }}" class="img" width="240" height="165">
     {% endif %}
@@ -17,6 +17,6 @@
     <p></p>
     <p></p>
     <p></p>
-    <p class="link-read-post"><a href="{% url 'image' %}">Load Photo</a></p>
+<!--    <p class="link-read-post"><a href="{% url 'image' %}">Load Photo</a></p>-->
 
 {% endblock %}

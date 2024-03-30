@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView, FormView
 
+from images.models import Image
 from trip.forms import AddTripForm
 # from trip.forms import AddTripForm
 from trip.models import Trip
@@ -37,20 +38,66 @@ class ShowTrip(DetailView):
 
 class AddTrip(CreateView):
     form_class = AddTripForm
-    # model = Trip
-    # fields = '__all__'
     template_name = 'trip/add.html'
 
     def get_success_url(self):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
+    def post(self, request, *args, **kwargs):
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        title = form.cleaned_data['title']
+        date = form.cleaned_data['date']
+        category = form.cleaned_data['category']
+        title_photo = form.cleaned_data['title_photo']
+        content = form.cleaned_data['content']
+        published = form.cleaned_data['published']
+
+        new_trip = Trip.objects.create(
+            title=title,
+            date=date,
+            category=category,
+            title_photo=title_photo,
+            content=content,
+            published=published,
+        )
+        files = form.cleaned_data["image"]
+        for f in files:
+            Image.objects.create(travel=new_trip, image=f)
+        return super().form_valid(form)
+
 
 class EditTrip(UpdateView):
     model = Trip
-    fields = '__all__'
+    form_class = AddTripForm
     template_name = 'trip/add.html'
 
-    # success_url = reverse_lazy('home')
+    def post(self, request, *args, **kwargs):
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+
+        print(form.cleaned_data)
+        files = form.cleaned_data["image"]
+        print(files)
+
+        title = form.cleaned_data["title"]
+        trip_update = Trip.objects.get(pk=1)
+        print(trip_update)
+        for f in files:
+            Image.objects.update(image=f, travel=trip_update)
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('trip', kwargs={'slug': self.object.slug})

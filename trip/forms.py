@@ -1,9 +1,12 @@
 from django import forms
 
+from images.forms import MultipleFileField
 from trip.models import Trip
 
 
 class AddTripForm(forms.ModelForm):
+
+    image = MultipleFileField(required=False)
 
     class Meta:
         model = Trip
@@ -16,7 +19,5 @@ class AddTripForm(forms.ModelForm):
             'published',
             'category',
 
+
         ]
-        # widgets = {
-        #     'photo': forms.ClearableFileInput(attrs={'allow_multiple_selected'})
-        # }
