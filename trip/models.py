@@ -38,4 +38,4 @@ class Trip(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = generate_unique_slug(Trip, self.title)
-        return super(Trip, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)
