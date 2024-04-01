@@ -90,8 +90,8 @@ class EditTrip(UpdateView):
     def form_valid(self, form):
         """ through queryset? put slug field from copy object Trip from queryset? update this
          trip object? create new images copy from cleaned_data files?"""
-        # upd_trip = Trip.objects.get(slug=slug)
-        # print(upd_trip)
+        # instanse  = form.save(commit=False)
+        # instanse.slug = request.slug
         title = form.cleaned_data['title']
         date = form.cleaned_data['date']
         category = form.cleaned_data['category']
