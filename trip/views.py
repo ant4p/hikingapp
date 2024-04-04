@@ -77,7 +77,13 @@ class AddTrip(CreateView):
 class EditTrip(UpdateView):
     model = Trip
     form_class = AddTripForm
-    template_name = 'trip/add.html'
+    template_name = 'trip/edit.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['slug'] = Trip.objects.all()
+        print(context)
+        return context
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
@@ -98,7 +104,7 @@ class EditTrip(UpdateView):
         title_photo = form.cleaned_data['title_photo']
         content = form.cleaned_data['content']
         published = form.cleaned_data['published']
-
+        update_model = Trip.objects.get(id=id(object))
         update_trip = Trip.objects.update(
             title=title,
             date=date,

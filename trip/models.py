@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 from django.urls import reverse
+from slugify import slugify
 
 from categories.models import Category
 
@@ -36,9 +37,11 @@ class Trip(models.Model):
         return reverse('trip', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        if not self.slug:
+        if not self.id and not self.slug:
+            print(self.slug)
             self.slug = generate_unique_slug(Trip, self.title)
-        return super().save(*args, **kwargs)
+            print(self.slug)
+        super().save(*args, **kwargs)
 
 
 # not self.id and
