@@ -42,13 +42,13 @@ class AddTrip(CreateView):
     form_class = AddTripForm
     template_name = 'trip/add.html'
 
-    def post(self, request, *args, **kwargs):
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+    # def post(self, request, *args, **kwargs):
+    #     form_class = self.get_form_class()
+    #     form = self.get_form(form_class)
+    #     if form.is_valid():
+    #         return self.form_valid(form)
+    #     else:
+    #         return self.form_invalid(form)
 
     def form_valid(self, form):
 
@@ -95,8 +95,8 @@ class AddTrip(CreateView):
 
         return super().form_valid(form)
 
-    # def get_success_url(self):
-    #     return reverse('trip', kwargs={'slug': self.object.slug})
+    def get_success_url(self):
+        return reverse('trip', kwargs={'slug': self.object.slug})
 
 
 # class EditTrip(UpdateView):
