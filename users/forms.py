@@ -13,6 +13,5 @@ class ProfileUserForm(forms.ModelForm):
             'birthday',
             'first_name',
             'last_name',
-
         ]
 

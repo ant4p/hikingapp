@@ -36,12 +36,12 @@ class Trip(models.Model):
     def get_absolute_url(self):
         return reverse('trip', kwargs={'slug': self.slug})
 
-    def save(self, *args, **kwargs):
-        if not self.id and not self.slug:
-            print(self.slug)
-            self.slug = generate_unique_slug(Trip, self.title)
-            print(self.slug)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         # print(self.id)
+    #         # print(self.slug)
+    #         self.slug = generate_unique_slug(Trip, self.title)
+    #         # print(self.slug)
+    #     super().save(*args, **kwargs)
 
-
-# not self.id and
+# and not self.slug
