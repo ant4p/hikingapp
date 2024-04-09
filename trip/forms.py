@@ -8,6 +8,7 @@ from trip.models import Trip
 class AddTripForm(forms.ModelForm):
 
     image = MultipleFileField(required=False)
+    slug = forms.CharField(required=False, widget=forms.HiddenInput())
 
     class Meta:
         model = Trip
@@ -22,6 +23,6 @@ class AddTripForm(forms.ModelForm):
 
             # 'slug',
         ]
-        widgets = {'slug': forms.HiddenInput}
+        # widgets = {'slug': forms.HiddenInput()}
 
     # AIFormSet = forms.inlineformset_factory(Trip, Image, fields='__all__')

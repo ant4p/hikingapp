@@ -42,56 +42,23 @@ class AddTrip(CreateView):
     form_class = AddTripForm
     template_name = 'trip/add.html'
 
-    # def post(self, request, *args, **kwargs):
-    #     form_class = self.get_form_class()
-    #     form = self.get_form(form_class)
-    #     if form.is_valid():
-    #         return self.form_valid(form)
-    #     else:
-    #         return self.form_invalid(form)
+    def post(self, request, *args, **kwargs):
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
     def form_valid(self, form):
-
-        """ Added 2 copy in DB. Problem in redefined method 'save' in model Trip?"""
+        f = form.save()
         title = form.cleaned_data['title']
-        print(form.cleaned_data['title'])
-        date = form.cleaned_data['date']
-        print(form.cleaned_data['date'])
-        category = form.cleaned_data['category']
-        print(form.cleaned_data['category'])
-        title_photo = form.cleaned_data['title_photo']
-        print(form.cleaned_data['title_photo'])
-        content = form.cleaned_data['content']
-        print(form.cleaned_data['content'])
-        published = form.cleaned_data['published']
-        print(form.cleaned_data['published'])
-        slug = generate_unique_slug(Trip, title)
-        print(slug)
-        print('--------')
+        f.slug = generate_unique_slug(Trip, title)
+        images = form.cleaned_data['image']
 
-
-        # if not self.id:
-        new_trip = Trip.objects.create(
-            title=title,
-            date=date,
-            category=category,
-            title_photo=title_photo,
-            content=content,
-            published=published,
-            slug=slug,
-        )
-        print(new_trip)
-        print(new_trip.title)
-        print(new_trip.slug)
-        new_trip.save()
-
-        files = form.cleaned_data["image"]
-        if files:
-            print(form.cleaned_data['image'])
-            for f in files:
-                i = Image.objects.create(travel=new_trip, image=f)
-                i.save()
-                print(i)
+        if images:
+            for i in images:
+                Image.objects.create(image=i, travel=f)
 
         return super().form_valid(form)
 
