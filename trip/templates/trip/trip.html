@@ -2,6 +2,10 @@
 
 {% block content %}
 
+    <p>{% for t in trip.get_file_fields %}</p>
+        <p>{{ t }}</p>
+    <p>{% endfor %}</p>
+    <p>____________________</p>
     <p>Name: {{trip.title}}</p>
     <p>Slug: {{trip.slug}}</p>
     <p>Content: {{trip.content}}</p>
