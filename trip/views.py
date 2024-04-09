@@ -66,52 +66,20 @@ class AddTrip(CreateView):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
 
-# class EditTrip(UpdateView):
-#     model = Trip
-#     # form_class = AddTripForm
-#     template_name = 'trip/edit.html'
-#
-#     def get_context_data(self, *args, **kwargs):
-#         context = super().get_context_data(*args, **kwargs)
-#         context['slug'] = Trip.objects.all()
-#         print(context)
-#         return context
-#
-#     def post(self, request, *args, **kwargs):
-#         form_class = self.get_form_class()
-#         form = self.get_form(form_class)
-#         if form.is_valid():
-#             return self.form_valid(form)
-#         else:
-#             return self.form_invalid(form)
-#
-#     def form_valid(self, form):
-#         """ through queryset? put slug field from copy object Trip from queryset? update this
-#          trip object? create new images copy from cleaned_data files?"""
-#         # instanse  = form.save(commit=False)
-#         # instanse.slug = request.slug
-#         title = form.cleaned_data['title']
-#         date = form.cleaned_data['date']
-#         category = form.cleaned_data['category']
-#         title_photo = form.cleaned_data['title_photo']
-#         content = form.cleaned_data['content']
-#         published = form.cleaned_data['published']
-#         update_model = Trip.objects.get(id=id(object))
-#         update_trip = Trip.objects.update(
-#             title=title,
-#             date=date,
-#             category=category,
-#             title_photo=title_photo,
-#             content=content,
-#             published=published,
-#         )
-#         files = form.cleaned_data["image"]
-#         for f in files:
-#             Image.objects.create(image=f, travel=update_trip)
-#         return super().form_valid(form)
-#
-#     def get_success_url(self):
-#         return reverse('trip', kwargs={'slug': self.object.slug})
+class EditTrip(UpdateView):
+    model = Trip
+    template_name = 'trip/add.html'
+    form_class = AddTripForm
+
+    def form_valid(self, form):
+        f = form.save()
+        images = form.cleaned_data['image']
+
+        if images:
+            for i in images:
+                Image.objects.create(image=i, travel=f)
+
+        return super().form_valid(form)
 
 
 class DeleteTrip(DeleteView):
