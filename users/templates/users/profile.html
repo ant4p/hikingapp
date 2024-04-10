@@ -5,10 +5,12 @@
     <p>Name: {{user.username}}</p>
 
     <p>____________________</p>
-
-    {% if user.title_photo %}
-            <p><img class="img-article" src="{{ user.title_photo.url }}" class="img" width="480" height="330"></p>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if user.avatar %}
+    <p><img class="img-article" src="{{ user.avatar.url }}" class="img" width="150" height="220"</p>
     {% endif %}
+
     {% for f in form %}
     <p><label class="form-label" for="{{f.id_for_label}}">{{ f.label }}</label>{{ f }}</p>
     <div class="form-error">{{ f.errors }}</div>

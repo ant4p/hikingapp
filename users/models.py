@@ -9,10 +9,10 @@ class User(AbstractUser):
     FEMALE = 'F'
     ATTACK_HELICOPTER = 'H'
     GENDER_LIST = {
-        'U': 'UNDECIDED',
-        'M': 'MALE',
-        'F': 'FEMALE',
-        'H': 'ATTACK HELICOPTER',
+        'U': 'Undecided',
+        'M': 'Male',
+        'F': 'Female',
+        'H': 'Attack Helicopter',
     }
 
     avatar = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True, verbose_name='Avatar')

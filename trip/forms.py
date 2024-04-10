@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 
 from images.forms import MultipleFileField
@@ -9,6 +11,9 @@ class AddTripForm(forms.ModelForm):
 
     image = MultipleFileField(required=False)
     slug = forms.CharField(required=False, widget=forms.HiddenInput())
+
+    year = datetime.date.today().year
+    date = forms.DateField(widget=forms.SelectDateWidget(years=tuple(range(year-5, year+3))))
 
     class Meta:
         model = Trip
