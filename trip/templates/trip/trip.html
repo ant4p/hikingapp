@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 
+{% block breadcrumbs %}
+    <p>____________________</p>
+    <p><a href="{% url 'edit' trip.slug %}">Edit Trip</a> | <a href="{% url 'delete' trip.slug %}">Delete Trip</a> </p>
+{% endblock %}
 {% block content %}
 
-    <p>{% for t in trip.get_file_fields %}</p>
-        <p>{{ t }}</p>
-    <p>{% endfor %}</p>
     <p>____________________</p>
-    <p>Name: {{trip.title}}</p>
+    <h2>{{ trip.title }}</h2>
+    <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
     <p>Slug: {{trip.slug}}</p>
     <p>Content: {{trip.content}}</p>
     <p>____________________</p>
-    <p>CATEgORY: {{trip.category}}</p>
+
     {% if trip.title_photo %}
-            <p><img class="img-article" src="{{ trip.title_photo.url }}" class="img" width="480" height="330"></p>
+            <p><img class="img-article-left thumb" src="{{ trip.title_photo.url }}" class="img" width="480" height="330"></p>
     {% endif %}
 
     {% for i in trip.imagesss.all %}
