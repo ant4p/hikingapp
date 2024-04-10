@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView, FormView
@@ -10,15 +11,8 @@ from trip.models import Trip
 from trip.utils import generate_unique_slug
 
 
-# # Create your views here.
-# class ShowTrips(ListView):
-#     template_name = 'base.html'
-#
-#     def get_queryset(self):
-#         return
-
-# def get_page(request):
-#     return render(request, 'trip/index.html')
+class AboutHikingapp(TemplateView):
+    template_name = 'trip/about.html'
 
 
 class TripList(ListView):
