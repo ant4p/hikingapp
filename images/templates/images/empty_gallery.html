@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block breadcrumbs %}
+    <h5>At this moment - gallery is empty</h5>
+    <a class="nav-link active" aria-current="page" href="{% url 'gallery' %}">REFRESH</a>
+{% endblock %}
+
+{% block content %}
+{% for i in images %}
+    {% if i.image %}
+            <img class="img-article" src="{{ i.image.url }}" class="img" width="480" height="330">
+
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
