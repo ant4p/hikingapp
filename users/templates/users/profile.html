@@ -15,12 +15,13 @@
     <p><label class="form-label" for="{{f.id_for_label}}">{{ f.label }}</label>{{ f }}</p>
     <div class="form-error">{{ f.errors }}</div>
     {% endfor %}
-    <p><button type="submit">Сохранить</button> </p>
+    <p><button type="submit">Save</button> </p>
     </form>
 
     <p></p>
     <p></p>
     <p></p>
     <p>____________________</p>
+    <p><a href="{% url 'users:password_change' %}">Change password</a></p>
 
 {% endblock %}

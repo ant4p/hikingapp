@@ -1,13 +1,13 @@
 from urllib import request
 
-from django.contrib.auth import get_user_model, logout
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView
 
-from users.forms import ProfileUserForm, LoginUserForm, RegisterUserForm
+from users.forms import ProfileUserForm, LoginUserForm, RegisterUserForm, PasswordChangeUserForm
 
 
 # Create your views here.
@@ -38,8 +38,11 @@ class RegisterUser(CreateView):
     success_url = reverse_lazy('users:login')
 
 
-# class LogoutUser(LogoutView):
-#     template_name = 'users/login.html'
-#
-#     def get_success_url(self):
-#         return reverse_lazy('home')
+class PasswordChangeUser(PasswordChangeView):
+    form_class = PasswordChangeUserForm
+    success_url = reverse_lazy('users:password_change_done')
+    template_name = 'users/password_change.html'
+
+
+class PasswordChangeDoneUser(PasswordChangeDoneView):
+    template_name = 'users/password_change_done.html'

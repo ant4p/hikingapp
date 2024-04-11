@@ -2,7 +2,7 @@ import datetime
 
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 
 
 class ProfileUserForm(forms.ModelForm):
@@ -49,3 +49,13 @@ class RegisterUserForm(UserCreationForm):
         if get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError('This email already used')
         return email
+
+
+class PasswordChangeUserForm(PasswordChangeForm):
+    old_password = forms.CharField(label='Old password',
+                                   widget=forms.PasswordInput())
+    new_password1 = forms.CharField(label='New password',
+                                    widget=forms.PasswordInput())
+    new_password2 = forms.CharField(label='Repeat new password',
+                                    widget=forms.PasswordInput())
+
