@@ -32,6 +32,20 @@
           <a class="nav-link active" aria-current="page" href="{% url 'add' %}">New Trip</a>
                 <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+          {% if user.is_authenticated %}
+<!--              <form action="{% url 'users:logout' %}" method="post">-->
+<!--                {% csrf_token %}-->
+<!--                <button type="submit" class="btn btn-success">выйти</button>-->
+<!--              </form>-->
+
+
+        <li class="last"><a href="{% url 'users:profile' %}">{{user.username}}</a> | <form action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">выйти</button>
+              </form>
+          {% else %}
+				<li class="last"><a href="{% url 'users:login' %}">Войти</a> | <a href="{% url 'users:register' %}">Регистрация</a> </li>
+          {% endif %}
 <!--        </li>-->
 <!--        <li class="nav-item">-->
 <!--          <a class="nav-link" href="#">Link</a>-->

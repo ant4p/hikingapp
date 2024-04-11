@@ -1,5 +1,8 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.views import LoginView
+from urllib import request
+
+from django.contrib.auth import get_user_model, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView
@@ -33,3 +36,10 @@ class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
+
+
+# class LogoutUser(LogoutView):
+#     template_name = 'users/login.html'
+#
+#     def get_success_url(self):
+#         return reverse_lazy('home')
