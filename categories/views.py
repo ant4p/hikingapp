@@ -1,7 +1,15 @@
 from django.views.generic import ListView
 
-
+from categories.models import Category
 from trip.models import Trip
+
+
+class ShowAllCategories(ListView):
+    template_name = 'categories/show_all_categories.html'
+    context_object_name = 'categories'
+
+    def get_queryset(self):
+        return Category.objects.all()
 
 
 class TripCategory(ListView):

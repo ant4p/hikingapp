@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for t in tags %}
+<p class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a></p>
+
+{% endfor %}
+{% endblock %}

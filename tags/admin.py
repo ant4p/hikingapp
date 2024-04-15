@@ -2,5 +2,11 @@ from django.contrib import admin
 
 from tags.models import Tag
 
+
 # Register your models here.
-admin.site.register(Tag)
+
+class TagAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('tag',)}
+
+
+admin.site.register(Tag, TagAdmin)
