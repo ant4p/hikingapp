@@ -1,6 +1,6 @@
+from urllib import request
+
 from django.http import Http404
-from django.shortcuts import get_list_or_404
-from django.urls import reverse, reverse_lazy
 
 from django.views.generic import ListView, DetailView
 import random
@@ -17,9 +17,8 @@ class ShowGallery(ListView):
             random_images = random.choices(images, k=9)
             return random_images
         except IndexError:
-            return reverse_lazy('empty_gallery')
-
-            # raise Http404('Fall')
+            pass
+            # raise Http404()
 
 
 class ShowEmptyGallery(DetailView):
