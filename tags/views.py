@@ -23,12 +23,15 @@ class TripTag(ListView):
     context_object_name = 'trips'
 
     def get_queryset(self):
-        return Trip.objects.filter(tag__slug=self.kwargs['slug'], published=True).select_related('category')
+        return (Trip.objects.filter(tag__slug=self.kwargs['slug'], published=True).
+                select_related('category').
+                prefetch_related('tag'))
 
 
 class AddTag(CreateView):
     form_class = AddTagForm
     template_name = 'tags/add_tag.html'
+    success_url = reverse_lazy('all_tags')
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
@@ -45,5 +48,5 @@ class AddTag(CreateView):
 
         return super().form_valid(form)
 
-    success_url = reverse_lazy('all_tags')
+
 
