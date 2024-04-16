@@ -46,3 +46,4 @@ class AddTag(CreateView):
         return super().form_valid(form)
 
     success_url = reverse_lazy('all_tags')
+
