@@ -4,6 +4,8 @@
 
 {% for t in tags %}
 <p class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a></p>
-
 {% endfor %}
+<p>----------------------</p>
+<p><h5><a href="{% url 'add_tag' %}"</h5>>Add</a> |
+
 {% endblock %}

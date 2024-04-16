@@ -11,6 +11,11 @@
     <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
     <p>Slug: {{trip.slug}}</p>
     <p>Content: {{trip.content}}</p>
+    {% for t in trip.tag.all %}
+        {% if t.tag %}
+            <class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a>
+    {% endif %}
+    {% endfor %}
     <p>____________________</p>
 
     {% if trip.title_photo %}
