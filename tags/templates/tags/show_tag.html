@@ -10,7 +10,7 @@
     <p>CATEgORY: {{t.category}}</p>
     <p>Content: {{t.content}}</p>
     {% for i in t.tag.all %}
-        <class ="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
+        <a class ="link-read-post" href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
     {% endfor %}
 
     {% if t.title_photo %}

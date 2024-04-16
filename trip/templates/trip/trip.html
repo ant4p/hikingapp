@@ -4,6 +4,7 @@
     <p>____________________</p>
     <p><a href="{% url 'edit' trip.slug %}">Edit Trip</a> | <a href="{% url 'delete' trip.slug %}">Delete Trip</a> </p>
 {% endblock %}
+
 {% block content %}
 
     <p>____________________</p>
@@ -13,7 +14,7 @@
     <p>Content: {{trip.content}}</p>
     {% for t in trip.tag.all %}
         {% if t.tag %}
-            <class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a>
+            <a class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a>
     {% endif %}
     {% endfor %}
     <p>____________________</p>
