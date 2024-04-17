@@ -9,6 +9,7 @@ class Tag(models.Model):
 
     class Meta:
         db_table = 'tags'
+        ordering = ['-id']
 
     def __str__(self):
         return self.tag

@@ -4,6 +4,7 @@ from django.views.generic import ListView, CreateView
 
 from tags.forms import AddTagForm
 from tags.models import Tag
+from tags.utils import DataMixin
 from trip.models import Trip
 from trip.utils import generate_unique_slug
 
@@ -18,7 +19,7 @@ class ShowAllTags(ListView):
         return Tag.objects.all()
 
 
-class TripTag(ListView):
+class TripTag(DataMixin, ListView):
     template_name = 'tags/show_tag.html'
     context_object_name = 'trips'
 
