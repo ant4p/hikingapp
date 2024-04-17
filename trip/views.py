@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -6,18 +8,18 @@ from slugify import slugify
 
 from images.models import Image
 from trip.forms import AddTripForm
-# from trip.forms import AddTripForm
 from trip.models import Trip
 from trip.utils import generate_unique_slug, DataMixin
 
 
-class AboutHikingapp(TemplateView):
+class AboutHikingapp(LoginRequiredMixin, TemplateView):
     template_name = 'trip/about.html'
 
 
 class TripList(DataMixin, ListView):
     template_name = 'trip/index.html'
     context_object_name = 'trips'
+    title_page = 'Main page'
 
     def get_queryset(self):
         return Trip.objects.filter(published=True).select_related('category')
@@ -32,9 +34,10 @@ class ShowTrip(DetailView):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
 
-class AddTrip(CreateView):
+class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddTripForm
     template_name = 'trip/add.html'
+
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()

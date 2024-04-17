@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block navigation %}
-
+{% if page_obj.has_other_pages %}
 <nav class="list-pages">
     <ul>
 		{% if page_obj.has_previous %}
@@ -45,7 +45,8 @@
 			<a href="?page={{ page_obj.next_page_number }}">&gt;</a>
 		</li>
 		{% endif %}
+
     </ul>
 </nav>
-
+{% endif %}
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
@@ -29,7 +30,7 @@ class TripTag(DataMixin, ListView):
                 prefetch_related('tag'))
 
 
-class AddTag(CreateView):
+class AddTag(LoginRequiredMixin, CreateView):
     form_class = AddTagForm
     template_name = 'tags/add_tag.html'
     success_url = reverse_lazy('all_tags')
