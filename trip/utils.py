@@ -9,3 +9,7 @@ def generate_unique_slug(trip, field):
         unique_slug = f'{main_slug}-{counter}'
         counter += 1
     return unique_slug
+
+
+class DataMixin:
+    paginate_by = 3

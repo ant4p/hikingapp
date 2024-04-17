@@ -8,14 +8,14 @@ from images.models import Image
 from trip.forms import AddTripForm
 # from trip.forms import AddTripForm
 from trip.models import Trip
-from trip.utils import generate_unique_slug
+from trip.utils import generate_unique_slug, DataMixin
 
 
 class AboutHikingapp(TemplateView):
     template_name = 'trip/about.html'
 
 
-class TripList(ListView):
+class TripList(DataMixin, ListView):
     template_name = 'trip/index.html'
     context_object_name = 'trips'
 

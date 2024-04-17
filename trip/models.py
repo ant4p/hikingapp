@@ -29,6 +29,7 @@ class Trip(models.Model):
 
     class Meta:
         db_table = 'trips'
+        ordering = ['-time_create']
 
     def __str__(self):
         return self.title

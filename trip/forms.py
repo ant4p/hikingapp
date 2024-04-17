@@ -27,8 +27,6 @@ class AddTripForm(forms.ModelForm):
             'published',
             'category',
             'tag',
-
-            # 'slug',
         ]
         # widgets = {'slug': forms.HiddenInput()}
 
