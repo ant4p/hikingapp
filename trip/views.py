@@ -1,10 +1,12 @@
-from django.contrib.auth.decorators import login_required
+
+
+from django.contrib.auth import get_user_model
+
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView, FormView
-from slugify import slugify
+
 
 from images.models import Image
 from trip.forms import AddTripForm
@@ -22,7 +24,7 @@ class TripList(DataMixin, ListView):
     title_page = 'Main page'
 
     def get_queryset(self):
-        return Trip.objects.filter(published=True).select_related('category')
+        return Trip.objects.filter(published=True).select_related('category').prefetch_related('user')
 
 
 class ShowTrip(DetailView):
@@ -38,7 +40,6 @@ class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddTripForm
     template_name = 'trip/add.html'
 
-
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
@@ -52,6 +53,11 @@ class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
         title = form.cleaned_data['title']
         f.slug = generate_unique_slug(Trip, title)
         images = form.cleaned_data['image']
+        cd = form.cleaned_data
+        print(cd)
+
+        authorized_user = self.request.user
+        f.user = authorized_user
 
         if images:
             for i in images:
