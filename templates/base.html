@@ -33,11 +33,11 @@
                 <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
                 <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'all_tags' %}">TAGS</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'tag:all_tags' %}">TAGS</a>
                 <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'all_categories' %}">Category</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'cat:all_categories' %}">Category</a>
                 <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'gallery' %}">GALLERY</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'image:gallery' %}">GALLERY</a>
                 <li class="nav-item">
           {% if user.is_authenticated %}
 <!--              <form action="{% url 'users:logout' %}" method="post">-->

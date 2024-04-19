@@ -8,10 +8,8 @@ from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView
 
 from users.forms import ProfileUserForm, LoginUserForm, RegisterUserForm, PasswordChangeUserForm
-from users.models import User
 
 
-# Create your views here.
 class ProfileUser(UpdateView):
     model = get_user_model()
     form_class = ProfileUserForm

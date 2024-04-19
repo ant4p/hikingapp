@@ -25,9 +25,9 @@ from hikingapp import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('trip.urls')),
-    path('', include('categories.urls')),
-    path('', include('images.urls')),
-    path('', include('tags.urls')),
+    path('category/', include('categories.urls', namespace='cat')),
+    path('image/', include('images.urls', namespace='image')),
+    path('tag/', include('tags.urls', namespace='tag')),
     path('users/', include('users.urls', namespace='users')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]

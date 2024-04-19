@@ -15,4 +15,4 @@ class Tag(models.Model):
         return self.tag
 
     def get_absolute_url(self):
-        return reverse('tag', kwargs={'slug': self.slug})
+        return reverse('tag:tag', kwargs={'slug': self.slug})

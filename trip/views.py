@@ -1,11 +1,7 @@
-
-
-from django.contrib.auth import get_user_model
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView, FormView
+from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 
 
 from images.models import Image

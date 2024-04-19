@@ -21,5 +21,5 @@ class ShowGallery(ListView):
             # raise Http404()
 
 
-class ShowEmptyGallery(DetailView):
-    template_name = 'images/empty_gallery.html'
+# class ShowEmptyGallery(DetailView):
+#     template_name = 'images/empty_gallery.html'

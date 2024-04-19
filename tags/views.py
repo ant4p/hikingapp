@@ -33,7 +33,7 @@ class TripTag(DataMixin, ListView):
 class AddTag(LoginRequiredMixin, CreateView):
     form_class = AddTagForm
     template_name = 'tags/add_tag.html'
-    success_url = reverse_lazy('all_tags')
+    success_url = reverse_lazy('tag:all_tags')
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
