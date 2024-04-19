@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load thumbnail %}
 
 {% for t in trips %}
     <p>Name: {{t.title}}</p>
@@ -9,7 +10,8 @@
     <p>Content: {{t.content}}</p>
 
     {% if t.title_photo %}
-            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>
+            <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
+<!--            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>-->
     {% endif %}
 {% endfor %}
 

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'easy_thumbnails',
     'debug_toolbar',
 
     'trip',
@@ -169,6 +170,41 @@ SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
 
 # DEFAULT_USER_IMAGE = MEDIA_URL + ''
+
+THUMBNAIL_ALIASES = {
+    'users.User.avatar': {
+        'avatar': {
+            'size': (150, 100),
+            'crop': 'scale',
+        },
+    },
+    '': {
+        'icon': {
+            'size': (50, 50),
+            'crop': 'smart',
+        },
+        'title_photo_into_trip': {
+            'size': (650, 550),
+            'crop': 'scale',
+        },
+        'gallery': {
+            'size': (530, 380),
+            'crop': 'smart',
+        },
+    },
+    'trip.Trip.title_photo': {
+        'title_photo': {
+            'size': (450, 350),
+            'crop': 'smart',
+        },
+    },
+    'images.Image.image': {
+        'image': {
+            'size': (530, 380),
+            'crop': 'smart',
+        },
+    },
+}
 
 
 

@@ -24,7 +24,9 @@ class TripList(DataMixin, ListView):
     title_page = 'Main page'
 
     def get_queryset(self):
-        return Trip.objects.filter(published=True).select_related('category').prefetch_related('user')
+        return (Trip.objects.filter(published=True).
+                select_related('category').
+                prefetch_related('user', 'tag'))
 
 
 class ShowTrip(DetailView):
@@ -53,11 +55,7 @@ class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
         title = form.cleaned_data['title']
         f.slug = generate_unique_slug(Trip, title)
         images = form.cleaned_data['image']
-        cd = form.cleaned_data
-        print(cd)
-
-        authorized_user = self.request.user
-        f.user = authorized_user
+        f.user = self.request.user
 
         if images:
             for i in images:
@@ -69,7 +67,7 @@ class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
 
-class EditTrip(UpdateView):
+class EditTrip(LoginRequiredMixin, UpdateView):
     model = Trip
     template_name = 'trip/add.html'
     form_class = AddTripForm
@@ -85,7 +83,7 @@ class EditTrip(UpdateView):
         return super().form_valid(form)
 
 
-class DeleteTrip(DeleteView):
+class DeleteTrip(LoginRequiredMixin, DeleteView):
     model = Trip
     template_name = 'trip/delete.html'
     success_url = reverse_lazy('home')

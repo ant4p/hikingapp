@@ -1,8 +1,7 @@
 
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.utils import timezone
+from easy_thumbnails.fields import ThumbnailerImageField
 
 
 # Create your models here.
@@ -18,6 +17,6 @@ class User(AbstractUser):
         'H': 'Attack Helicopter',
     }
 
-    avatar = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True, verbose_name='Avatar')
-    birthday = models.DateTimeField(blank=True, null=True, verbose_name='Birthday')
+    avatar = ThumbnailerImageField(upload_to='users/%Y/%m/%d/', blank=True, null=True, verbose_name='avatar')
+    birthday = models.DateTimeField(blank=True, null=True, verbose_name='birthday')
     gender = models.CharField(max_length=3, choices=GENDER_LIST, default=UNDECIDED)

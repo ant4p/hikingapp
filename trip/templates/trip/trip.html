@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-
+{% load thumbnail %}
     <p>____________________</p>
     <h2>{{ trip.title }}</h2>
     <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
@@ -20,12 +20,14 @@
     <p>____________________</p>
 
     {% if trip.title_photo %}
-            <p><img class="img-article-left thumb" src="{{ trip.title_photo.url }}" class="img" width="480" height="330"></p>
+            <p><img src="{{ trip.title_photo|thumbnail_url:'title_photo_into_trip' }}" alt=""></p>
+<!--            <p><img class="img-article-left thumb" src="{{ trip.title_photo.url }}" class="img" width="480" height="330"></p>-->
     {% endif %}
 
     {% for i in trip.imagesss.all %}
     {% if i.image %}
-    <img class="img-article" src="{{ i.image.url }}" class="img" width="240" height="165">
+        <img src="{{ i.image|thumbnail_url:'image' }}" alt="">
+<!--        <img class="img-article" src="{{ i.image.url }}" class="img" width="240" height="165">-->
     {% endif %}
     {% endfor %}
     <p></p>

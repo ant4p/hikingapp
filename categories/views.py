@@ -14,8 +14,10 @@ class ShowAllCategories(ListView):
 
 
 class TripCategory(DataMixin, ListView):
-    template_name = 'categories/show_category.html'
+    template_name = 'trip/index.html'
     context_object_name = 'trips'
 
     def get_queryset(self):
-        return Trip.objects.filter(category__slug=self.kwargs['slug'], published=True).select_related('category')
+        return (Trip.objects.filter(category__slug=self.kwargs['slug'], published=True).
+                select_related('category').
+                prefetch_related('user', 'tag'))

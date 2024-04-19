@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load thumbnail %}
 
 {% for t in trips %}
 
     <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
-    <p>Slug: {{t.slug}}</p>
-    <p>Category: {{t.category}}</p>
+    <p> Category: {{t.category}} | Slug: {{t.slug}} | Author: {{t.user}} </p>
     <p>Content: {{t.content}}</p>
-    <p>Author: {{t.user}}</p>
+
+    {% for i in t.tag.all %}
+        {% if i.tag %}
+            <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
+        {% endif %}
+    {% endfor %}
     {% if t.title_photo %}
-            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>
+            <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
+<!--            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>-->
     <p>________________________________________________________________________</p>
     <p></p>
     <p></p>

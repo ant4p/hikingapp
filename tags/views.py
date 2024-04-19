@@ -21,13 +21,13 @@ class ShowAllTags(ListView):
 
 
 class TripTag(DataMixin, ListView):
-    template_name = 'tags/show_tag.html'
+    template_name = 'trip/index.html'
     context_object_name = 'trips'
 
     def get_queryset(self):
         return (Trip.objects.filter(tag__slug=self.kwargs['slug'], published=True).
                 select_related('category').
-                prefetch_related('tag'))
+                prefetch_related('user', 'tag'))
 
 
 class AddTag(LoginRequiredMixin, CreateView):
@@ -49,6 +49,3 @@ class AddTag(LoginRequiredMixin, CreateView):
         f.slug = generate_unique_slug(Tag, tag)
 
         return super().form_valid(form)
-
-
-
