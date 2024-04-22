@@ -1,8 +1,8 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import get_object_or_404
 
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
-
 
 from images.models import Image
 from trip.forms import AddTripForm
@@ -32,6 +32,9 @@ class ShowTrip(DetailView):
 
     def get_success_url(self):
         return reverse('trip', kwargs={'slug': self.object.slug})
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Trip, slug=self.kwargs[self.slug_url_kwarg])
 
 
 class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
@@ -63,10 +66,13 @@ class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
 
-class EditTrip(LoginRequiredMixin, UpdateView):
+class EditTrip(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Trip
     template_name = 'trip/add.html'
     form_class = AddTripForm
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
 
     def form_valid(self, form):
         f = form.save()
@@ -78,8 +84,18 @@ class EditTrip(LoginRequiredMixin, UpdateView):
 
         return super().form_valid(form)
 
+    def get_object(self, queryset=None):
+        return get_object_or_404(Trip, slug=self.kwargs[self.slug_url_kwarg])
 
-class DeleteTrip(LoginRequiredMixin, DeleteView):
+
+class DeleteTrip(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     model = Trip
     template_name = 'trip/delete.html'
     success_url = reverse_lazy('home')
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Trip, slug=self.kwargs[self.slug_url_kwarg])
+
