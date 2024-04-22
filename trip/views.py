@@ -33,8 +33,8 @@ class ShowTrip(DetailView):
     def get_success_url(self):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
-    def get_object(self, queryset=None):
-        return get_object_or_404(Trip, slug=self.kwargs[self.slug_url_kwarg])
+    # def get_object(self, queryset=None):
+    #     return get_object_or_404(Trip, slug=self.kwargs[self.slug_url_kwarg])
 
 
 class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
@@ -72,7 +72,7 @@ class EditTrip(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     form_class = AddTripForm
 
     def test_func(self):
-        return self.request.user == self.get_object().user
+        return (self.request.user == self.get_object().user) or self.request.user.is_superuser
 
     def form_valid(self, form):
         f = form.save()
@@ -84,18 +84,14 @@ class EditTrip(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
 
         return super().form_valid(form)
 
-    def get_object(self, queryset=None):
-        return get_object_or_404(Trip, slug=self.kwargs[self.slug_url_kwarg])
 
-
-class DeleteTrip(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class DeleteTrip(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Trip
     template_name = 'trip/delete.html'
     success_url = reverse_lazy('home')
 
+    # def test_func(self):
+    #     return (self.request.user == self.get_object().user) or self.request.user.is_superuser
+
     def test_func(self):
-        return self.request.user == self.get_object().user
-
-    def get_object(self, queryset=None):
-        return get_object_or_404(Trip, slug=self.kwargs[self.slug_url_kwarg])
-
+        return self.request.user

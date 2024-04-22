@@ -1,9 +1,5 @@
-from urllib import request
-
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView
 
