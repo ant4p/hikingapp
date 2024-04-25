@@ -22,7 +22,7 @@ class TripList(DataMixin, ListView):
 
     def get_queryset(self):
         return (Trip.objects.filter(published=True).
-                select_related('category').
+                select_related('category', 'user').
                 prefetch_related('user', 'tag'))
 
 
@@ -30,6 +30,11 @@ class ShowTrip(DetailView):
     model = Trip
     template_name = 'trip/trip.html'
     context_object_name = 'trip'
+
+    def get_queryset(self):
+        return (Trip.objects.filter(published=True).
+                select_related('category', 'user').
+                prefetch_related('user', 'tag'))
 
     def get_success_url(self):
         return reverse('trip', kwargs={'slug': self.object.slug})
@@ -71,6 +76,11 @@ class EditTrip(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Trip
     template_name = 'trip/add.html'
     form_class = AddTripForm
+
+    # def get_queryset(self):
+    #     return (Trip.objects.filter(published=True).
+    #             select_related('category', 'user', 'trips').
+    #             prefetch_related('user', 'tag'))
 
     # trip = get_object_or_404(Trip, user=self.request.user)
 
