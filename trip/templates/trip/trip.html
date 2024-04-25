@@ -10,6 +10,7 @@
     <p>____________________</p>
     <h2>{{ trip.title }}</h2>
     <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
+    Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
     <p>Slug: {{trip.slug}}</p>
     <p>Content: {{trip.content}}</p>
     {% for t in trip.tag.all %}

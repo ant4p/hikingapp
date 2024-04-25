@@ -8,6 +8,7 @@ from images.models import Image
 from trip.forms import AddTripForm
 from trip.models import Trip
 from trip.utils import generate_unique_slug, DataMixin
+from users.models import User
 
 
 class AboutHikingapp(LoginRequiredMixin, TemplateView):
@@ -66,10 +67,19 @@ class AddTrip(LoginRequiredMixin, DataMixin, CreateView):
         return reverse('trip', kwargs={'slug': self.object.slug})
 
 
-class EditTrip(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
+class EditTrip(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Trip
     template_name = 'trip/add.html'
     form_class = AddTripForm
+
+    # trip = get_object_or_404(Trip, user=self.request.user)
+
+    # def get_object(self, queryset=None):
+    #     print(self.request.FILES[1])
+    #     t = Trip.objects.filter(user=self.request.user).select_related('user').prefetch_related('user')
+    #     return Trip.objects.filter(user=self.request.user).select_related('user').prefetch_related('user')
+    # # def get_queryset(self):
+    #     return Trip.objects.filter(user=self.request.user).select_related('user').prefetch_related('user')
 
     def test_func(self):
         return (self.request.user == self.get_object().user) or self.request.user.is_superuser
@@ -90,8 +100,23 @@ class DeleteTrip(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'trip/delete.html'
     success_url = reverse_lazy('home')
 
-    # def test_func(self):
-    #     return (self.request.user == self.get_object().user) or self.request.user.is_superuser
+    # def get_queryset(self):
+    #     return Trip.objects.filter(user=self.request.user).select_related('user').prefetch_related('user')
 
     def test_func(self):
-        return self.request.user
+        return (self.request.user == self.get_object().user) or self.request.user.is_superuser
+
+
+class SearchTrip(ListView):
+    template_name = 'trip/index.html'
+    context_object_name = 'trips'
+
+    def get_queryset(self):
+        return (Trip.objects.filter(title__icontains=self.request.GET.get('search')).
+                select_related('category').
+                prefetch_related('user', 'tag'))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search')
+        return context

@@ -6,7 +6,8 @@
 {% for t in trips %}
 
     <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
-    <p> Category: {{t.category}} | Slug: {{t.slug}} | Author: {{t.user}} </p>
+    <p> Category: {{t.category}} | Slug: {{t.slug}} </p>
+    Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}"> {{t.user}}</a>
     <p>Content: {{t.content}}</p>
 
     {% for i in t.tag.all %}
