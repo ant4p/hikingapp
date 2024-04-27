@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-plkn%k0&xm91m!n))!3mxh46u=u&2-!ovwwi4$h8l16^4=n$4r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1'
+]
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'easy_thumbnails',
+    'social_django',
     'debug_toolbar',
 
     'trip',
@@ -78,6 +82,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+
             ],
         },
     },
@@ -153,6 +161,23 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'users.authentication.EmailAuthBackend',
 ]
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.yandex.YandexOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '51914310'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'Auh8yYMI23oEfstO4QKf'
+
+
+SOCIAL_AUTH_GITHUB_KEY = 'fbc530e373fc0e25e1c6'
+SOCIAL_AUTH_GITHUB_SECRET = 'e813fd8edabffffc5c0316b5782c57db97f9b0da'
+
+SOCIAL_AUTH_YANDEX_OAUTH2_KEY = 'a1a4c7c7b865460f87aee31601d72e53'
+SOCIAL_AUTH_YANDEX_OAUTH2_SECRET = 'fc081d8ffcce4e4080d4e85bdbcc3279'
+# SOCIAL_AUTH_YANDEX_OAUTH2_REDIRECT_URI = 'http://127.0.0.1:8000/auth/complete/yandex-oauth2/'
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -170,6 +195,7 @@ SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
 
 # DEFAULT_USER_IMAGE = MEDIA_URL + ''
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
 THUMBNAIL_ALIASES = {
     'users.User.avatar': {

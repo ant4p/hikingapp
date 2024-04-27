@@ -10,6 +10,8 @@
     {% if user.avatar %}
 <!--        <p><img src="{{ user.avatar.url }}" class="img" width="150" height="220"></p>-->
         <p><img src="{{ user.avatar|thumbnail_url:'avatar' }}" alt=""></p>
+    {% else %}
+        <p><img src="/media/users/default.jpg"></p>
 
     {% endif %}
 

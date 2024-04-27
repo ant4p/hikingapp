@@ -11,7 +11,12 @@
     <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
     <div class="form-error">{{ f.errors }}</div>
     {% endfor %}
+
+    <p><a href ='{% url "social:begin" "vk-oauth2" %}'>Enter VK</a></p>
+    <p><a href='{% url "social:begin" "github" %}'>Sign in with GitHub</a></p>
+    <p><a href='{% url "social:begin" "yandex-oauth2" %}'>Sign in with Yandex</a></p>
     <p><button type="submit">Enter</button></p>
+
 
     <p><a href="{% url 'users:password_reset' %}">Forgot your password?</a></p>
 
