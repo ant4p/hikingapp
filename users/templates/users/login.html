@@ -1,25 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Авторизация</h1>
+
+<h1>Authorization</h1>
 
 <form method="post">
     <input type="hidden" name="next" value="{{ next }}" />
     {% csrf_token %}
     <div class="form-error">{{ form.non_field_errors }}</div>
     {% for f in form %}
-    <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+    <p><label class="col-auto">{{ f.label }}</label>{{ f }}</p>
     <div class="form-error">{{ f.errors }}</div>
     {% endfor %}
 
-    <p><a href ='{% url "social:begin" "vk-oauth2" %}'>Enter VK</a></p>
-    <p><a href='{% url "social:begin" "github" %}'>Sign in with GitHub</a></p>
-    <p><a href='{% url "social:begin" "yandex-oauth2" %}'>Sign in with Yandex</a></p>
-    <p><button type="submit">Enter</button></p>
-
+    <a href ='{% url "social:begin" "vk-oauth2" %}'>Sign in with VK</a>
+    <a href='{% url "social:begin" "github" %}'>Sign in with GitHub</a>
+    <a href='{% url "social:begin" "yandex-oauth2" %}'>Sign in with Yandex</a>
+    <p><button type="submit" class="btn btn-primary btn-lg">Enter</button></p>
 
     <p><a href="{% url 'users:password_reset' %}">Forgot your password?</a></p>
 
-
-</form>
 {% endblock %}
+
+<!--    <form method="post">-->
+<!--        <input type="hidden" name="next" value="{{ next }}" />-->
+<!--        {% csrf_token %}-->
+<!--&lt;!&ndash;        {% for f in form %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <p><label class="form-label" >{{ f.label }}</label>{{ f }}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-error">{{ f.errors }}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--        <div class="row g-3 align-items-center">-->
+<!--        <div class="col-auto">-->
+<!--            <label for="exampleInputEmail1" class="col-form-label">Login</label>-->
+<!--        </div>-->
+<!--         <div class="col-auto">-->
+<!--            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">-->
+<!--         </div>-->
+<!--          <div class="row g-3 align-items-center">-->
+<!--          <div class="col-auto">-->
+<!--            <label for="inputPassword6" class="col-form-label">Password</label>-->
+<!--          </div>-->
+<!--          <div class="col-auto">-->
+<!--            <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">-->
+<!--          </div>-->
+
+
+<!--        <button type="submit" class="btn btn-primary btn-lg">Submit</button>-->
+<!--    </form>-->

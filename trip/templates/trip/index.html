@@ -3,26 +3,33 @@
 {% block content %}
 {% load thumbnail %}
 
-{% for t in trips %}
 
-    <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
-    <p> Category: {{t.category}} | Slug: {{t.slug}} </p>
-    Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}"> {{t.user}}</a>
-    <p>Content: {{t.content}}</p>
 
-    {% for i in t.tag.all %}
-        {% if i.tag %}
-            <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
-        {% endif %}
-    {% endfor %}
-    {% if t.title_photo %}
-            <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
-<!--            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>-->
-    <p>________________________________________________________________________</p>
-    <p></p>
-    <p></p>
-    {% endif %}
-{% endfor %}
+                    {% for t in trips %}
+                        <div class="container">
+                        <div class="row">
+                             <div class="col">
+                                 {% if t.title_photo %}
+                                    <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
+                                 {% endif %}
+                             </div>
+                                <div class="col">
+                                    <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
+                                    <p> Category: {{t.category}} | Slug: {{t.slug}} </p>
+                                    <a>Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}"> {{t.user}}</a>
+                                    <p>Content: {{t.content}}</p>
+
+                                    {% for i in t.tag.all %}
+                                        {% if i.tag %}
+                                            <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                    {% endfor %}
+
+
+                    </div>
+    </div>
 
 {% endblock %}
 
