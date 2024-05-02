@@ -12,6 +12,6 @@ def generate_unique_slug(trip, field):
 
 
 class DataMixin:
-    paginate_by = 5
+    paginate_by = 3
 
 

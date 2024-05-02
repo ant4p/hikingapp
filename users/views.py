@@ -10,6 +10,7 @@ from users.forms import ProfileUserForm, LoginUserForm, RegisterUserForm, Passwo
 class UserTrips(ListView):
     template_name = 'trip/index.html'
     context_object_name = 'trips'
+    paginate_by = 3
 
     def get_queryset(self):
         return (Trip.objects.filter(user__username=self.kwargs['username'], published=True).
