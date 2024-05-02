@@ -17,11 +17,12 @@
                                     <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
                                     <p> Category: {{t.category}} | Slug: {{t.slug}} </p>
                                     <a>Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}"> {{t.user}}</a>
-                                    <p>Content: {{t.content}}</p>
+                                    <p>Content: {{t.content|linebreaks|truncatewords:40}}</p>
+
 
                                     {% for i in t.tag.all %}
                                         {% if i.tag %}
-                                            <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
+                                        <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
                                         {% endif %}
                                     {% endfor %}
                                 </div>

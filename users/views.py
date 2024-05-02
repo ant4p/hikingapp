@@ -13,7 +13,7 @@ class UserTrips(ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        return (Trip.objects.filter(user__username=self.kwargs['username'], published=True).
+        return (Trip.objects.filter(user__username=self.kwargs['username']).
                 select_related('category').
                 prefetch_related('user', 'tag'))
 

@@ -32,7 +32,7 @@ class ShowTrip(DetailView):
     context_object_name = 'trip'
 
     def get_queryset(self):
-        return (Trip.objects.filter(published=True).
+        return (Trip.objects.filter().
                 select_related('category', 'user').
                 prefetch_related('user', 'tag'))
 
