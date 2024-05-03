@@ -3,23 +3,27 @@
 
 {% block content %}
 
-<h1>{{title}}</h1>
 
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-error">{{ form.non_field_errors }}</div>
-    {% for f in form %}
-    <p><label class="form-label">{{ f.label }}</label>{{ f }}</p>
-        {% if f.photo %}
-
-        {% endif %}
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
-    <p><button type="submit">Submit!!</button> </p>
-</form>
-
+<div class="container">
+    <div class="row">
+         <div class="col">
+             <h4>Edit trip</h4>
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+                    {% for f in form %}
+                        <p><label class="form-label">{{ f.label }}</label>{{ f }}</p>
+                    <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+                    <p><button type="submit" class="btn btn-success">Submit</button> </p>
+                </form>
+         </div>
+    </div>
+</div>
 
 {% endblock %}
+
+
 
 
 

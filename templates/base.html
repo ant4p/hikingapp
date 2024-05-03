@@ -18,6 +18,13 @@
 
   </head>
   <body>
+    <style>
+      body {
+        background: #d4e8e1
+      }
+    </style>
+
+
 
 
 <!--  <nav class="navbar navbar-expand-lg">-->
@@ -111,7 +118,7 @@
 
 
         <form action="{% url 'search' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get">
-          <input class="form-control" type="search" name="search" placeholder="Search..."  aria-label="Search">
+          <input class="form-control" type="search" name="search" placeholder="Search trip..."  aria-label="Search">
         </form>
 
         {% if user.is_authenticated %}

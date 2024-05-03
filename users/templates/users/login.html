@@ -2,48 +2,34 @@
 
 {% block content %}
 
-<h1>Authorization</h1>
 
-<form method="post">
-    <input type="hidden" name="next" value="{{ next }}" />
-    {% csrf_token %}
-    <div class="form-error">{{ form.non_field_errors }}</div>
-    {% for f in form %}
-    <p><label class="col-auto">{{ f.label }}</label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+         <div class="col">
+             <h4>Authorization</h4>
+                <form method="post">
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    {% csrf_token %}
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+                    {% for f in form %}
+                    <p><label class="col-auto">{{ f.label }}</label>{{ f }}</p>
+                    <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+                    <p><a href="{% url 'users:password_reset' %}">Forgot your password?</a></p>
+                    <p><button type="submit" class="btn btn-success">Enter</button></p>
+                </form>
+         </div>
+    </div>
+</div>
 
-    <a href ='{% url "social:begin" "vk-oauth2" %}'>Sign in with VK</a>
-    <a href='{% url "social:begin" "github" %}'>Sign in with GitHub</a>
-    <a href='{% url "social:begin" "yandex-oauth2" %}'>Sign in with Yandex</a>
-    <p><button type="submit" class="btn btn-primary btn-lg">Enter</button></p>
-
-    <p><a href="{% url 'users:password_reset' %}">Forgot your password?</a></p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p><a href ='{% url "social:begin" "vk-oauth2" %}'>Sign in with VK</a></p>
+            <p><a href='{% url "social:begin" "github" %}'>Sign in with GitHub</a></p>
+            <p><a href='{% url "social:begin" "yandex-oauth2" %}'>Sign in with Yandex</a></p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
-
-<!--    <form method="post">-->
-<!--        <input type="hidden" name="next" value="{{ next }}" />-->
-<!--        {% csrf_token %}-->
-<!--&lt;!&ndash;        {% for f in form %}&ndash;&gt;-->
-<!--&lt;!&ndash;        <p><label class="form-label" >{{ f.label }}</label>{{ f }}</p>&ndash;&gt;-->
-<!--&lt;!&ndash;        <div class="form-error">{{ f.errors }}</div>&ndash;&gt;-->
-<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
-<!--        <div class="row g-3 align-items-center">-->
-<!--        <div class="col-auto">-->
-<!--            <label for="exampleInputEmail1" class="col-form-label">Login</label>-->
-<!--        </div>-->
-<!--         <div class="col-auto">-->
-<!--            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">-->
-<!--         </div>-->
-<!--          <div class="row g-3 align-items-center">-->
-<!--          <div class="col-auto">-->
-<!--            <label for="inputPassword6" class="col-form-label">Password</label>-->
-<!--          </div>-->
-<!--          <div class="col-auto">-->
-<!--            <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">-->
-<!--          </div>-->
-
-
-<!--        <button type="submit" class="btn btn-primary btn-lg">Submit</button>-->
-<!--    </form>-->

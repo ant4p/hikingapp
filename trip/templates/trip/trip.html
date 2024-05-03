@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
 {% block breadcrumbs %}
-    <p>____________________</p>
+
+<div class="container text">
+    <div class="row">
+        <div class="col">
     <p><a href="{% url 'edit' trip.slug %}">Edit Trip</a> | <a href="{% url 'delete' trip.slug %}">Delete Trip</a> </p>
-{% endblock %}
+        </div>
+    </div>
+</div>
+            {% endblock %}
 
 {% block content %}
 {% load thumbnail %}
-    <p>____________________</p>
-<div class="container">
+<div class="container ">
     <div class="row">
-        <div class="col">
+        <div class="col text-center">
             {% if trip.title_photo %}
             <p><img src="{{ trip.title_photo|thumbnail_url:'title_photo_into_trip' }}" alt=""></p>
             {% endif %}
@@ -18,12 +23,16 @@
         <div class="col">
     <h2>{{ trip.title }}</h2>
     <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
-    Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
-        <div>
+<!--    Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>-->
+
+
             {% if trip.user.avatar %}
-                <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""></p>
+                <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""> Author: <a class="link-read-post"><a
+                        href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a></p>
+            {% else %}
+            Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
         {% endif %}
-            </div>
+
     <p>Slug: {{trip.slug}}</p>
     <p>Content: {{trip.content}}</p>
 
@@ -33,46 +42,35 @@
         {% endif %}
     {% endfor %}
         </div>
-    <p>____________________</p>
 
 
 
-<!--    {% if trip.title_photo %}-->
-<!--            <p><img src="{{ trip.title_photo|thumbnail_url:'title_photo_into_trip' }}" alt=""></p>-->
-<!--&lt;!&ndash;            <p><img class="img-article-left thumb" src="{{ trip.title_photo.url }}" class="img" width="480" height="330"></p>&ndash;&gt;-->
-<!--    {% endif %}-->
-<div>
-    {% for i in trip.imagesss.all %}
-    {% if i.image %}
-        <img src="{{ i.image|thumbnail_url:'gallery'}}">
-<!--        <img class="img-article" src="{{ i.image.url }}" class="img" width="240" height="165">-->
-    {% endif %}
-    {% endfor %}
+
+<div class="container text-center">
+
+<div id="carousel" class="carousel slide">
+
+  <div class="carousel-inner">
+        {% for img in trip.imagesss.all %}
+        {% with forloop.counter0 as i %}
+
+    <div class="carousel-item {% if i is 0 %}active{% endif %}">
+
+            <img src="{{ img.image|thumbnail_url:'image'}}">
+
+    </div>
+        {% endwith %}
+        {% endfor %}
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
 </div>
-    <p>____________________</p>
-<!--<div class="container-fluid">-->
-
-<!--<div id="carouselExample" class="carousel slide">-->
-<!--  <div class="carousel-inner">-->
-
-<!--    <div class="carousel-item active">-->
-<!--{% for i in trip.imagesss.all %}-->
-<!--    {% if i.image %}-->
-<!--      <img src="{{ i.image|thumbnail_url:'image' }}">-->
-<!--    </div>-->
-
-<!--  </div>-->
-
-<!--  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">-->
-<!--    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--    <span class="visually-hidden">Previous</span>-->
-<!--  </button>-->
-<!--  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">-->
-<!--    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--    <span class="visually-hidden">Next</span>-->
-<!--  </button>-->
-<!--    {% endif %}-->
-<!--    {% endfor %}-->
-<!--</div>-->
-<!--                </div>-->
+                </div>
+</div>
 {% endblock %}

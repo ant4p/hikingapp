@@ -14,3 +14,17 @@ button.link-button:focus {
 }
 
 li.nav-item li.last {float: right;}
+
+.paginator {
+    background: #2C632C;
+    color: #2C632C;
+}
+.page-item {
+    background: #2C632C;
+    color: #2C632C;
+}
+
+.pagination justify-content-center {
+    background: #2C632C;
+    color: #2C632C;
+}

@@ -157,15 +157,16 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'users:login'
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'users.authentication.EmailAuthBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+
+# ]
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.vk.VKOAuth2',
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.yandex.YandexOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.EmailAuthBackend',
 ]
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '51914310'
@@ -211,7 +212,7 @@ THUMBNAIL_ALIASES = {
         },
         'title_photo_into_trip': {
             'size': (650, 550),
-            'crop': 'scale',
+            'crop': 'smart',
         },
         'gallery': {
             'size': (530, 380),
@@ -226,8 +227,8 @@ THUMBNAIL_ALIASES = {
     },
     'images.Image.image': {
         'image': {
-            'size': (530, 380),
-            'crop': 'smart',
+            'size': (1200, 768),
+            # 'crop': 'smart',
         },
     },
 }

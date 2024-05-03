@@ -3,40 +3,36 @@
 {% block content %}
 {% load thumbnail %}
 
+{% for t in trips %}
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+             {% if t.title_photo %}
+                <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
+             {% endif %}
+        </div>
+        <div class="col">
+            <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
+            <p> Category: {{t.category}} | Date: {{t.date}} </p>
+            <a>Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}"> {{t.user}}</a>
+            <p>{{t.content|linebreaks|truncatewords:40}}</p>
 
-
-                    {% for t in trips %}
-                        <div class="container">
-                        <div class="row">
-                             <div class="col">
-                                 {% if t.title_photo %}
-                                    <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
-                                 {% endif %}
-                             </div>
-                                <div class="col">
-                                    <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
-                                    <p> Category: {{t.category}} | Slug: {{t.slug}} </p>
-                                    <a>Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}"> {{t.user}}</a>
-                                    <p>Content: {{t.content|linebreaks|truncatewords:40}}</p>
-
-
-                                    {% for i in t.tag.all %}
-                                        {% if i.tag %}
-                                        <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                    {% endfor %}
-
-
-                    </div>
+            Tags:
+            {% for i in t.tag.all %}
+                {% if i.tag %}
+                <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
+</div>
+{% endfor %}
 
 {% endblock %}
 
 {% block navigation %}
 
-<nav aria-label="...">
+<nav aria-label="nav">
     <ul class="pagination justify-content-center">
 {% if page_obj.has_other_pages %}
 

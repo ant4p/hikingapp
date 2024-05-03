@@ -77,10 +77,10 @@ class EditTrip(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'trip/add.html'
     form_class = AddTripForm
 
-    # def get_queryset(self):
-    #     return (Trip.objects.filter(published=True).
-    #             select_related('category', 'user', 'trips').
-    #             prefetch_related('user', 'tag'))
+    def get_queryset(self):
+        return (Trip.objects.filter().
+                select_related('user').
+                prefetch_related('user'))
 
     # trip = get_object_or_404(Trip, user=self.request.user)
 
@@ -110,8 +110,10 @@ class DeleteTrip(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'trip/delete.html'
     success_url = reverse_lazy('home')
 
-    # def get_queryset(self):
-    #     return Trip.objects.filter(user=self.request.user).select_related('user').prefetch_related('user')
+    def get_queryset(self):
+        return (Trip.objects.filter().
+                select_related('user').
+                prefetch_related('user'))
 
     def test_func(self):
         return (self.request.user == self.get_object().user) or self.request.user.is_superuser

@@ -2,6 +2,7 @@
 
 {% block content %}
 {% load thumbnail %}
+<div class="container">
     <p><img src="{{ user.avatar|thumbnail_url:'icon' }}" alt="">Name: {{user.username}}</p>
 
     <p>____________________</p>
@@ -27,5 +28,5 @@
     <p></p>
     <p>____________________</p>
     <p><a href="{% url 'users:password_change' %}">Change password</a></p>
-
+</div>
 {% endblock %}

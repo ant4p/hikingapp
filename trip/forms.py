@@ -31,6 +31,6 @@ class AddTripForm(forms.ModelForm):
             'category',
             'tag',
         ]
-        # widgets = {'slug': forms.HiddenInput()}
+        # widgets = {'content': forms.Textarea(attrs={'cols': 50, 'rows': 5})}
 
     # AIFormSet = forms.inlineformset_factory(Trip, Image, fields='__all__')
