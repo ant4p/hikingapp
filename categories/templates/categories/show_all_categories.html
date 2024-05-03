@@ -2,8 +2,18 @@
 
 {% block content %}
 
-{% for c in categories %}
-<p class="link-read-post"><a href="{{ c.get_absolute_url }}">{{ c.title }}</a></p>
+<div class="container">
+    <div class="row">
+         <div class="col">
+             <h4>Categories</h4>
+             <p></p>
+                {% for c in categories %}
+                     <form action="{{c.get_absolute_url}}" method="get">
+                         <p><button type="submit" class="btn btn-outline-dark">{{ c.title }}</button></p>
+                     </form>
+                {% endfor %}
+         </div>
+    </div>
+</div>
 
-{% endfor %}
 {% endblock %}

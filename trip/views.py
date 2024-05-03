@@ -111,7 +111,7 @@ class DeleteTrip(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy('home')
 
     def get_queryset(self):
-        return (Trip.objects.filter().
+        return (Trip.objects.filter(slug=self.kwargs['slug']).
                 select_related('user').
                 prefetch_related('user'))
 

@@ -20,57 +20,51 @@
             <p><img src="{{ trip.title_photo|thumbnail_url:'title_photo_into_trip' }}" alt=""></p>
             {% endif %}
         </div>
-        <div class="col">
-    <h2>{{ trip.title }}</h2>
-    <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
-<!--    Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>-->
+            <div class="col">
+            <h2>{{ trip.title }}</h2>
+            <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
 
+                    {% if trip.user.avatar %}
+                        <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""> Author: <a class="link-read-post"><a
+                                href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
+                    {% else %}
+                        Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
+                    {% endif %}
+        <!--    <p>Slug: {{trip.slug}}</p>-->
+            <p>Description: {{trip.content}}</p>
 
-            {% if trip.user.avatar %}
-                <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""> Author: <a class="link-read-post"><a
-                        href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a></p>
-            {% else %}
-            Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
-        {% endif %}
-
-    <p>Slug: {{trip.slug}}</p>
-    <p>Content: {{trip.content}}</p>
-
-    {% for t in trip.tag.all %}
-        {% if t.tag %}
-            <a class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a>
-        {% endif %}
-    {% endfor %}
-        </div>
+                    {% for t in trip.tag.all %}
+                        {% if t.tag %}
+                            <a class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+    </div>
+</div>
 
 
 
 
 <div class="container text-center">
-
-<div id="carousel" class="carousel slide">
-
-  <div class="carousel-inner">
-        {% for img in trip.imagesss.all %}
-        {% with forloop.counter0 as i %}
-
-    <div class="carousel-item {% if i is 0 %}active{% endif %}">
-
-            <img src="{{ img.image|thumbnail_url:'image'}}">
-
+    <div id="carousel" class="carousel slide">
+        <div class="carousel-inner">
+            {% for img in trip.imagesss.all %}
+            {% with forloop.counter0 as i %}
+            <div class="carousel-item {% if i is 0 %}active{% endif %}">
+                <img src="{{ img.image|thumbnail_url:'image'}}">
+            </div>
+            {% endwith %}
+            {% endfor %}
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
     </div>
-        {% endwith %}
-        {% endfor %}
-  <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+</div>
 
-</div>
-                </div>
-</div>
 {% endblock %}

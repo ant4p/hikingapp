@@ -2,11 +2,22 @@
 
 {% block content %}
 
-{% for t in tags %}
-<p class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a></p>
-{% endfor %}
-<p>----------------------</p>
-<p><a href="{% url 'tag:add_tag' %}">Add Slug</a></p>
-
+<div class="container">
+    <div class="row">
+         <div class="col">
+             <h4>Tags</h4>
+             <p></p>
+                 <form action="{% url 'tag:add_tag' %}" method="get">
+                     <button type="submit" class="btn btn-success">Add tag</button>
+                 </form>
+             <p></p>
+                {% for t in tags %}
+                <form action="{{t.get_absolute_url}}" method="get">
+                    <p><button type="submit" class="btn btn-outline-dark">{{ t.tag }}</button></p>
+                </form>
+                {% endfor %}
+         </div>
+    </div>
+</div>
 
 {% endblock %}
