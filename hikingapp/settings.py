@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-plkn%k0&xm91m!n))!3mxh46u=u&2-!ovwwi4$h8l16^4=n$4r
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '*',
     'localhost',
     '127.0.0.1'
 ]
@@ -221,7 +222,7 @@ THUMBNAIL_ALIASES = {
     },
     'trip.Trip.title_photo': {
         'title_photo': {
-            'size': (450, 350),
+            'size': (530, 380),
             'crop': 'smart',
         },
     },

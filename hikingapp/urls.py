@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.views.defaults import page_not_found
 
 from hikingapp import settings
-
+from trip.views import handler_403, handler_404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,4 +36,6 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = page_not_found
+handler404 = handler_404
+handler403 = handler_403
+

@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
+from django.template import RequestContext
 
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
@@ -132,3 +133,12 @@ class SearchTrip(ListView):
         context = super().get_context_data(**kwargs)
         context['search'] = self.request.GET.get('search')
         return context
+
+
+def handler_403(request, exception):
+    return render(request, template_name='trip/403_csrf.html')
+
+
+def handler_404(request, exception):
+    return render(request, template_name='trip/404.html')
+

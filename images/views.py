@@ -14,7 +14,7 @@ class ShowGallery(ListView):
     def get_queryset(self):
         images = Image.objects.all()
         try:
-            random_images = random.choices(images, k=9)
+            random_images = random.choices(images, k=12)
             return random_images
         except IndexError:
             pass
