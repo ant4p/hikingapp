@@ -142,3 +142,6 @@ def handler_403(request, exception):
 def handler_404(request, exception):
     return render(request, template_name='trip/404.html')
 
+
+def handler_500(request):
+    return render(request, template_name='trip/500.html')

@@ -5,13 +5,16 @@
 
 {% for t in trips %}
 <div class="container">
+
     <div class="row">
-        <div class="col text-center">
+        <div class="col">
+
              {% if t.title_photo %}
                 <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
              {% else %}
                 <p><img src="media/photos/default_photo_for_index_new.jpg"></p>
              {% endif %}
+
         </div>
         <div class="col">
             <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
@@ -26,6 +29,7 @@
                 {% endif %}
             {% endfor %}
         </div>
+
     </div>
 </div>
 {% endfor %}
