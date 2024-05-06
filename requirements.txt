@@ -4,3 +4,4 @@ easy-thumbnails==2.8.5
 python-slugify==8.0.4
 gunicorn==22.0.0
 psycopg2-binary==2.9.9
+social-auth-app-django==5.4.1

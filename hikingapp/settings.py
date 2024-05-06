@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,20 +20,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-plkn%k0&xm91m!n))!3mxh46u=u&2-!ovwwi4$h8l16^4=n$4r'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG')
+# if env_debug == 'False':
+#     DEBUG = False
+# else:
+#     DEBUG = True
 
-ALLOWED_HOSTS = [
-    '*',
-    'localhost',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+INTERNAL_IPS = os.getenv('INTERNAL_IPS')
 
 
 # Application definition
@@ -105,6 +103,24 @@ DATABASES = {
     }
 }
 
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            'HOST': os.getenv('POSTGRES_HOST'),
+            'PORT': os.getenv('POSTGRES_PORT'),
+            'NAME': os.getenv('POSTGRES_DB'),
+            'USER': os.getenv('POSTGRES_USER'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -165,39 +181,35 @@ LOGIN_URL = 'users:login'
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.vk.VKOAuth2',
     'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.yandex.YandexOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'users.authentication.EmailAuthBackend',
 ]
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = '51914310'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'Auh8yYMI23oEfstO4QKf'
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 
 
-SOCIAL_AUTH_GITHUB_KEY = 'fbc530e373fc0e25e1c6'
-SOCIAL_AUTH_GITHUB_SECRET = 'e813fd8edabffffc5c0316b5782c57db97f9b0da'
-
-SOCIAL_AUTH_YANDEX_OAUTH2_KEY = 'a1a4c7c7b865460f87aee31601d72e53'
-SOCIAL_AUTH_YANDEX_OAUTH2_SECRET = 'fc081d8ffcce4e4080d4e85bdbcc3279'
-SOCIAL_AUTH_YANDEX_OAUTH2_REDIRECT_URI = 'http://127.0.0.1:8000/social/auth/complete/yandex-oauth2/'
+SOCIAL_AUTH_GITHUB_KEY = os.getenv('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.getenv('SOCIAL_AUTH_GITHUB_SECRET')
 
 AUTH_USER_MODEL = 'users.User'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-# EMAIL_HOST_PASSWORD = '0u1sNhzvN6jWSahKzUJw'
-
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'info@hikingapp.ru'
-EMAIL_HOST_PASSWORD = '0u1sNhzvN6jWSahKzUJw'
-EMAIL_USE_SSL = True
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
 
-# DEFAULT_USER_IMAGE = MEDIA_URL + ''
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
+
+CSRF_TRUSTED_ORIGINS = []
+if scrf_subdomain := os.getenv("SCRF_SUBDOMAIN"):
+    CSRF_TRUSTED_ORIGINS += [f'http://{scrf_subdomain}', f'https://{scrf_subdomain}']
 
 THUMBNAIL_ALIASES = {
     'users.User.avatar': {
