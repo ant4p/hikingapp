@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import get_object_or_404, render
-from django.template import RequestContext
+from django.shortcuts import render
+
 
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
@@ -9,7 +9,6 @@ from images.models import Image
 from trip.forms import AddTripForm
 from trip.models import Trip
 from trip.utils import generate_unique_slug, DataMixin
-from users.models import User
 
 
 class AboutHikingapp(LoginRequiredMixin, TemplateView):
