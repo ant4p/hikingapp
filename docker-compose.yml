@@ -10,37 +10,38 @@ services:
   hikingapp:
     build:
       context: .
-      container_name: HIKE
-      image: hikingapp
-      entrypoint: /hikingapp/start.sh
-      ports:
-        - "8000:8000"
-      depends_on:
-        - db
-      volumes:
-        - static:/hikingapp/static
-        - media:/hikingapp/media
-      env_file:
-        - .env
-      environment:
-        - VIRTUAL_HOST=${ALLOWED_HOST}
-        - LETSENCRYPT_HOST=${ALLOWED_HOST}
+    container_name: HIKE
+    image: hikingapp
+    entrypoint: /hikingapp/start.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+       - db
+    volumes:
+      - static:/hikingapp/static
+      - media:/hikingapp/media
+    env_file:
+      - .env
+    environment:
+      - VIRTUAL_HOST=${ALLOWED_HOST}
+      - LETSENCRYPT_HOST=${ALLOWED_HOST}
 
   nginx:
     build:
       context: ./nginx/
-      volumes:
-        - static:/hikingapp/static
-        - media:/hikingapp/media
-        - certs:/etc/nginx/certs
-        - vhost:/etc/nginx/vhost.d
-        - html:/usr/share/nginx/html
-        - /var/run/docker.sock:/tmp/docker.sock:ro
-      depends_on:
-        - hikingapp
-      ports:
-        - "80:80"
-        - "443:443"
+    container_name: NGINX_jw
+    volumes:
+      - static:/hikingapp/static
+      - media:/hikingapp/media
+      - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - hikingapp
+    ports:
+      - "80:80"
+      - "443:443"
 
   acme_companion:
     image: nginxproxy/acme-companion
