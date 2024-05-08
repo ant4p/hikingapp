@@ -30,7 +30,7 @@ if env_debug == 'False':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOST', '').split()
 
 # INTERNAL_IPS = os.getenv('INTERNAL_IPS')
 
