@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 8000
 
+RUN chmod a+x /hikingapp/start.sh
+
 ENTRYPOINT ["./start.sh"]
