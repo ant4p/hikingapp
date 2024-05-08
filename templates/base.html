@@ -93,8 +93,7 @@
 <!--</nav>-->
 
     <div class="b-example-divider"></div>
-
-  <header class="p-3 mb-3 border-bottom">
+ <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
@@ -125,23 +124,22 @@
         </form>
 
         {% if user.is_authenticated %}
+
           <div class="dropdown text-end">
-          <a href="{% url 'users:profile' %}" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-             data-bs-toggle="dropdown" aria-expanded="false">{{user.username}}</a>
+            <a href="{% url 'users:profile' %}" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false">{{user.username}}</a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="{% url 'add' %}">New trip</a></li>
-
-            <li><a class="dropdown-item"
-                   href="{% url 'users:user_trips' user.username %}">My trips</a>
-              </li>
+            <li><a class="dropdown-item" href="{% url 'users:user_trips' user.username %}">My trips</a></li>
             <li><a class="dropdown-item" href="{% url 'users:profile' %}">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item">
                 <form action="{% url 'users:logout' %}" method="post">
                       {% csrf_token %}
-                        <button type="submit" class="btn btn-success">Exit</button>
+                  <button type="submit" class="btn btn-success">Exit</button>
                 </form>
-              </li>
+                </a>
+            </li>
           </ul>
           </div>
 <!--                <li class="nav-link active"><a href="{% url 'users:profile' %}">{{user.username}}</a>-->
@@ -154,6 +152,7 @@
       </div>
     </div>
   </header>
+
 
   <div class="b-example-divider"></div>
 

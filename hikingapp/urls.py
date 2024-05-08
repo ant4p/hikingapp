@@ -29,12 +29,12 @@ urlpatterns = [
     path('image/', include('images.urls', namespace='image')),
     path('tag/', include('tags.urls', namespace='tag')),
     path('users/', include('users.urls', namespace='users')),
-    path('__debug__/', include('debug_toolbar.urls')),
     path('social/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [path('__debug__/', include('debug_toolbar.urls')),]
 
 handler404 = handler_404
 handler403 = handler_403

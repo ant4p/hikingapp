@@ -3,4 +3,4 @@ db.sqlite3
 /static/debug_toolbar/
 /static/admin/
 .env
-
+prod_settings.py
