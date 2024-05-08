@@ -17,7 +17,6 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.views.defaults import page_not_found
 
 from hikingapp import settings
 from trip.views import handler_403, handler_404, handler_500
