@@ -12,13 +12,18 @@ class ProfileUserForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = [
-            'avatar',
             'username',
-            'gender',
             'email',
-            'birthday',
             'first_name',
             'last_name',
+            'birthday',
+            'gender',
+            'avatar',
+
+
+
+
+
         ]
 
 

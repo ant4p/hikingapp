@@ -10,7 +10,7 @@
                     {% csrf_token %}
                     <div class="form-error">{{ form.non_field_errors }}</div>
                         {% for f in form %}
-                            <p><label class="form-label">{{ f.tag }}</label>{{ f }}</p>
+                            <p><label class="form">{{ f.tag }}</label>{{ f }}</p>
                     <div class="form-error">{{ f.errors }}</div>
                         {% endfor %}
                     <p><button type="submit" class="btn btn-success">Submit</button> </p>

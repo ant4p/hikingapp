@@ -230,7 +230,7 @@ if scrf_subdomain := os.getenv("SCRF_SUBDOMAIN"):
 THUMBNAIL_ALIASES = {
     'users.User.avatar': {
         'avatar': {
-            'size': (150, 100),
+            'size': (350, 250),
             'crop': 'scale',
         },
     },
