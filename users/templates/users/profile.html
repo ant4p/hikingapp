@@ -2,34 +2,35 @@
 
 {% block content %}
 {% load thumbnail %}
+
 <div class="container">
     <div class="row">
          <div class="col">
              <div class="row">
             <p><img src="{{ user.avatar|thumbnail_url:'icon' }}">{{user.username}}</p>
              </div>
-    <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
 
-    {% for f in form %}
-    <p><label class="form-label" >{{ f.label }}</label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
-     <div class="row text-center">
-    <p><button type="submit" class="btn btn-success">Save</button> </p>
-         </div>
-    </form>
-
-    <p><a href="{% url 'users:password_change' %}">Change password</a></p>
-         </div>
-             <div class="col">
-                 {% if user.avatar %}
-<!--        <p><img src="{{ user.avatar.url }}" class="img" width="150" height="220"></p>-->
-        <p><img src="{{ user.avatar|thumbnail_url:'avatar' }}" alt=""></p>
-    {% else %}
-        <p><img src="/media/users/default.jpg"></p>
-
-    {% endif %}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for f in form %}
+                    <p><label class="form-label" >{{ f.label }}</label>{{ f }}</p>
+                    <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+                 <div class="row">
+                    <p><button type="submit" class="btn btn-success">Save</button> </p>
                  </div>
+            </form>
+
+            <p><a href="{% url 'users:password_change' %}">Change password</a></p>
+         </div>
+         <div class="col">
+             {% if user.avatar %}
+                <p><img src="{{ user.avatar|thumbnail_url:'avatar' }}" alt=""></p>
+             {% else %}
+                 <p><img src="/media/users/default.jpg"></p>
+             {% endif %}
+         </div>
+    </div>
 </div>
+
 {% endblock %}
