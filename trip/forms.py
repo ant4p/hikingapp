@@ -10,17 +10,17 @@ from trip.models import Trip
 
 class AddTripForm(forms.ModelForm):
     image = MultipleFileField(required=False)
-    slug = forms.CharField(required=False, widget=forms.HiddenInput())
+    # slug = forms.CharField(required=False, widget=forms.HiddenInput())
 
     year = datetime.date.today().year
     date = forms.DateField(widget=forms.SelectDateWidget(years=tuple(range(year - 5, year + 3))))
 
     tag = AddTagForm
-    user = forms.CharField(required=False, widget=forms.HiddenInput())
+    # user = forms.CharField(required=False, widget=forms.HiddenInput())
 
     class Meta:
         model = Trip
-        exclude = ['slug', 'user']
+        # exclude = ['slug', 'user']
         fields = [
             'title',
 
