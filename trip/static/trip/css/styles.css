@@ -1,3 +1,20 @@
+body {
+        background: #d4e8e1
+      }
+html, body {
+	font-family: 'Arial';
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	color: #444;
+}
+
+body {
+
+  background-color: #d4e8e1;
+
+}
 .form-input {
     width: 300px;
     font-size: 16px;

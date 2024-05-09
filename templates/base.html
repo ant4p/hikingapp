@@ -20,77 +20,15 @@
           rel="stylesheet">
 
   </head>
-  <body>
+
+<body>
     <style>
       body {
-        background: #d4e8e1
+        background: #c3e6bc
       }
     </style>
 
 
-
-
-<!--  <nav class="navbar navbar-expand-lg">-->
-
-<!--  <div class="container-fluid">-->
-<!--    <a class="navbar-brand" href="{% url 'home' %}">HikingUP!</a>-->
-<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--      <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--      <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link active" aria-current="page" href="{% url 'add' %}">New Trip</a>-->
-<!--                <li class="nav-item">-->
-<!--          <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>-->
-<!--                <li class="nav-item">-->
-<!--&lt;!&ndash;          <a class="nav-link active" aria-current="page" href="{% url 'tag:all_tags' %}">TAGS</a>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li class="nav-item">&ndash;&gt;-->
-<!--&lt;!&ndash;          <a class="nav-link active" aria-current="page" href="{% url 'cat:all_categories' %}">Categories</a>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li class="nav-item">&ndash;&gt;-->
-<!--          <a class="nav-link active" aria-current="page" href="{% url 'image:gallery' %}">GALLERY</a>-->
-<!--                <li class="nav-item">-->
-<!--          <a class="dropdown-item" href="{% url 'tag:all_tags' %}">TAGS</a></li>-->
-<!--          <a class="dropdown-item" href="{% url 'cat:all_categories' %}">Categories</a></li>-->
-<!--          <li class="nav-item dropdown">-->
-
-<!--            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                Categories-->
-<!--            </a>-->
-<!--              <ul class="dropdown-menu">-->
-
-<!--                                {% for c in categories %}-->
-
-<!--                        <li><hr class="dropdown-divider"></li>-->
-<!--                  {% endfor %}-->
-<!--            <li><a class="dropdown-item" href="{{ c.get_absolute_url }}">Action</a></li>-->
-<!--            <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--            <li><hr class="dropdown-divider"></li>-->
-<!--            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--          </ul>-->
-<!--        </li>-->
-<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
-<!--&lt;!&ndash;          <a class="nav-link disabled" aria-disabled="true">Disabled</a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--      </ul>-->
-
-<!--      <form action="{% url 'search' %}" class="d-flex" role="search" method="get">-->
-<!--        <input class="form-control me-2" type="search" name="search" placeholder="Search Trip" aria-label="Search">-->
-<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--      </form>-->
-<!--        {% if user.is_authenticated %}-->
-<!--                <li class="nav-link active"><a href="{% url 'users:profile' %}">{{user.username}}</a> | <form action="{% url 'users:logout' %}" method="post">-->
-<!--                      {% csrf_token %}-->
-<!--                      <button type="submit" class="btn btn-success">Exit</button>-->
-<!--                    </form>-->
-<!--                <li class="nav-link active">-->
-<!--          {% else %}-->
-<!--				<li class="nav-link active"><a href="{% url 'users:login' %}">Login</a> | <a href="{% url 'users:register' %}">Registration</a> </li>-->
-<!--                <li class="nav-link active"></li>-->
-<!--          {% endif %}-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</nav>-->
 
     <div class="b-example-divider"></div>
  <header class="p-3 mb-3 border-bottom">
