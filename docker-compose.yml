@@ -2,6 +2,7 @@ services:
   db:
     image: postgres:15
     container_name: DB
+    restart: always
     volumes:
       - ~/.pg.pg_data/hikingapp:/var/lib/postgresql/data
     env_file:
@@ -12,6 +13,7 @@ services:
       context: .
     container_name: HIKE
     image: hikingapp
+    restart: always
     entrypoint: /hikingapp/start.sh
     ports:
       - "8000:8000"
@@ -31,6 +33,7 @@ services:
     build:
       context: ./nginx/
     container_name: NGINX_jw
+    restart: always
     volumes:
       - static:/hikingapp/static
       - media:/hikingapp/media
@@ -52,6 +55,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - acme:/etc/acme.sh
+      - certs:/etc/nginx/certs
 
 volumes:
   static:
