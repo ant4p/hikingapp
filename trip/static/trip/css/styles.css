@@ -32,7 +32,7 @@ html, body {
 .pagination > li > span:focus,
 .pagination > li > span:hover
 {
-    color: #2C632C;
+    color: #3A833A;
     background-color: #eee;
     border-color: #ddd;
 }
@@ -40,27 +40,27 @@ html, body {
 .pagination > .active > a
 {
     color: white;
-    background-color: #2C632C !Important;
-    border: solid 1px #2C632C !Important;
+    background-color: #3A833A !Important;
+    border: solid 1px #3A833A !Important;
 }
 
 .pagination > .active > a:hover
 {
-    background-color: #2C632C !Important;
-    border: solid 1px #2C632C;
+    background-color: #3A833A !Important;
+    border: solid 1px #3A833A;
 }
 
 .btn-success {
-    background-color: #2C632C !Important;
+    background-color: #3A833A !Important;
 }
 
 
 .link-read-post {
-    color: #2C632C !Important;
+    color: #3A833A;
 }
 
 .nav-link active {
-    color: #2C632C !Important;
+    color: #3A833A !Important;
 }
 
 .page-link {

@@ -43,7 +43,7 @@
           <li><a href="{% url 'add' %}" class="nav-link px-2 link-body-emphasis">New trip</a></li>
 
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false" >
             Order by
           </a>
           <ul class="dropdown-menu">
@@ -80,10 +80,10 @@
             </li>
           </ul>
           </div>
-<!--                <li class="nav-link active"><a href="{% url 'users:profile' %}">{{user.username}}</a>-->
-<!--                <li class="nav-link active">-->
+
           {% else %}
-				<li class="nav-link active"><a href="{% url 'users:login' %}">Login</a> | <a href="{% url 'users:register' %}">Registration</a> </li>
+				<li class="nav-link active"><a href="{% url 'users:login' %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Login</a> |
+                    <a href="{% url 'users:register' %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Registration</a> </li>
                 <li class="nav-link active"></li>
           {% endif %}
 

@@ -17,15 +17,15 @@
 
         </div>
         <div class="col">
-            <p class="link-read-post"><a href="{{ t.get_absolute_url }}"><h5> {{ t.title }}</h5></a></p>
+            <p class="link-read-post"><a href="{{ t.get_absolute_url }}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"><h5> {{ t.title }}</h5></a></p>
             <p> Category: {{t.category}} | Date: {{t.date}} </p>
-            <a>Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}"> {{t.user}}</a>
+            <a>Author: <a class="link-read-post"><a href="{% url 'users:user_trips' t.user %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> {{t.user}}</a>
             <p>{{t.content|linebreaks|truncatewords:40}}</p>
 
             Tags:
             {% for i in t.tag.all %}
                 {% if i.tag %}
-                <a class="link-read-post"><a href="{{ i.get_absolute_url }}">{{ i.tag }}</a>
+                <a class="link-read-post"><a href="{{ i.get_absolute_url }}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ i.tag }}</a>
                 {% endif %}
             {% endfor %}
         </div>
