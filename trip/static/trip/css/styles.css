@@ -1,20 +1,15 @@
 body {
-        background: #d4e8e1
+        background: #d8e8e1
       }
 html, body {
 	font-family: 'Arial';
 	margin: 0;
 	padding: 0;
-	height: 100%;
-	width: 100%;
+	height: 150%;
+	width: 150%;
 	color: #444;
 }
 
-body {
-
-  background-color: #d4e8e1;
-
-}
 .form-input {
     width: 300px;
     font-size: 16px;
@@ -57,4 +52,17 @@ body {
 
 .btn-success {
     background-color: #2C632C !Important;
+}
+
+
+.link-read-post {
+    color: #2C632C !Important;
+}
+
+.nav-link active {
+    color: #2C632C !Important;
+}
+
+.page-link {
+    color: #2C632C !Important;
 }
