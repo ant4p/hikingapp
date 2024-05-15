@@ -1,7 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 
-
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -144,3 +143,7 @@ def handler_404(request, exception):
 
 def handler_500(request):
     return render(request, template_name='trip/500.html')
+
+
+def terms_of_use(request):
+    return render(request, template_name='trip/terms_of_use.html')

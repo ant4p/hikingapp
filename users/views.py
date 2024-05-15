@@ -4,13 +4,13 @@ from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView, ListView
 
 from trip.models import Trip
+from trip.utils import DataMixin
 from users.forms import ProfileUserForm, LoginUserForm, RegisterUserForm, PasswordChangeUserForm
 
 
-class UserTrips(ListView):
+class UserTrips(DataMixin, ListView):
     template_name = 'trip/index.html'
     context_object_name = 'trips'
-    paginate_by = 3
 
     def get_queryset(self):
         return (Trip.objects.filter(user__username=self.kwargs['username']).

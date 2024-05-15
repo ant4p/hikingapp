@@ -5,7 +5,10 @@
 <div class="container text">
     <div class="row">
         <div class="col">
-    <p><a href="{% url 'edit' trip.slug %}">Edit Trip</a> | <a href="{% url 'delete' trip.slug %}">Delete Trip</a> </p>
+    <p><a href="{% url 'edit' trip.slug %}"
+          class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Edit Trip</a>
+        | <a href="{% url 'delete' trip.slug %}"
+         class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete Trip</a> </p>
         </div>
     </div>
 </div>
@@ -26,7 +29,7 @@
 
                     {% if trip.user.avatar %}
                         <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""> Author: <a class="link-read-post"><a
-                                href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
+                                href="{% url 'users:user_trips' trip.user %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> {{trip.user}}</a>
                     {% else %}
                         Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
                     {% endif %}
@@ -35,7 +38,7 @@
 
                     {% for t in trip.tag.all %}
                         {% if t.tag %}
-                            <a class="link-read-post"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a>
+                            <a class="link-read-post"><a href="{{ t.get_absolute_url }}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ t.tag }}</a>
                         {% endif %}
                     {% endfor %}
             </div>

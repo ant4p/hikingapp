@@ -1,8 +1,9 @@
 from django.views.generic import ListView
 
 from categories.models import Category
-from categories.utils import DataMixin
+
 from trip.models import Trip
+from trip.utils import DataMixin
 
 
 class ShowAllCategories(ListView):

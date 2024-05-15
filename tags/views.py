@@ -1,13 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
 from tags.forms import AddTagForm
 from tags.models import Tag
-from tags.utils import DataMixin
+
 from trip.models import Trip
-from trip.utils import generate_unique_slug
+from trip.utils import generate_unique_slug, DataMixin
 
 
 # Create your views here.

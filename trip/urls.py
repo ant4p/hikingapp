@@ -1,6 +1,6 @@
 from django.urls import path
 
-from trip.views import TripList, ShowTrip, AddTrip, DeleteTrip, EditTrip, AboutHikingapp, SearchTrip
+from trip.views import TripList, ShowTrip, AddTrip, DeleteTrip, EditTrip, AboutHikingapp, SearchTrip, terms_of_use
 
 urlpatterns = [
     path('', TripList.as_view(), name='home'),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('trip/<slug:slug>/', ShowTrip.as_view(), name='trip'),
     path('about/', AboutHikingapp.as_view(), name='about'),
     path('search/', SearchTrip.as_view(), name='search'),
+    path('terms_of_use/', terms_of_use, name='terms')
 
 ]
 

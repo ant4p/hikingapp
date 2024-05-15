@@ -15,7 +15,9 @@
                     <p><label class="form-label">{{ f.label }}</label>{{ f }}</p>
                     <div class="form-error">{{ f.errors }}</div>
                     {% endfor %}
-                    <p><a href="{% url 'users:password_reset' %}">Forgot your password?</a></p>
+                    <p><a href="{% url 'users:password_reset' %}"
+                          class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                        Forgot your password?</a></p>
                     <p><button type="submit" class="btn btn-success">Enter</button></p>
                 </form>
          </div>
@@ -27,7 +29,9 @@
         <div class="col">
 <!--            <p><a href='{% url "social:begin" "vk-oauth2" %}'>Sign in with VK</a></p>-->
 <!--            <p><a href='{% url "social:begin" "google-oauth2" %}'>Sign in with Google</a></p>-->
-            <p><a href='{% url "social:begin" "github" %}'>Sign in with GitHub</a></p>
+            <p><a href='{% url "social:begin" "github" %}'
+                  class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                Sign in with GitHub</a></p>
         </div>
     </div>
 </div>
