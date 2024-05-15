@@ -1,4 +1,5 @@
 <!doctype html>
+{% load i18n %}
 {% load static %}
 {% load thumbnail %}
 
@@ -39,19 +40,19 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="{% url 'home' %}" class="nav-link px-2 link-body-emphasis">HikingUP</a></li>
-        <li><a href="{% url 'add' %}" class="nav-link px-2 link-body-emphasis">New trip</a></li>
+        <li><a href="{% url 'home' %}" class="nav-link px-2 link-body-emphasis">Hikingapp</a></li>
+        <li><a href="{% url 'add' %}" class="nav-link px-2 link-body-emphasis">{% translate 'New trip' %}</a></li>
 
         <li class="dropdown text-end">
           <a href="#" class="nav-link px-2 link-body-emphasis text-decoration-none dropdown-toggle"
-              data-bs-toggle="dropdown" aria-expanded="false"> Order by</a>
+              data-bs-toggle="dropdown" aria-expanded="false">{% translate 'Order by' %}</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'tag:all_tags' %}">Tags</a></li>
-            <li><a class="dropdown-item" href="{% url 'cat:all_categories' %}">Categories</a></li>
+            <li><a class="dropdown-item" href="{% url 'tag:all_tags' %}">{% translate 'Tags' %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'cat:all_categories' %}">{% translate 'Categories' %}</a></li>
           </ul>
         </li>
-        <li><a href="{% url 'image:gallery' %}" class="nav-link px-2 link-body-emphasis">Gallery</a></li>
-        <li><a href="{% url 'about' %}" class="nav-link px-2 link-body-emphasis">About</a></li>
+        <li><a href="{% url 'image:gallery' %}" class="nav-link px-2 link-body-emphasis">{% translate 'Gallery' %}</a></li>
+        <li><a href="{% url 'about' %}" class="nav-link px-2 link-body-emphasis">{% translate 'About' %}</a></li>
 
       </ul>
 
