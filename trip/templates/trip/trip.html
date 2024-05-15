@@ -31,7 +31,7 @@
                         <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""> Author: <a class="link-read-post"><a
                                 href="{% url 'users:user_trips' trip.user %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> {{trip.user}}</a>
                     {% else %}
-                        Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}"> {{trip.user}}</a>
+                        Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> {{trip.user}}</a>
                     {% endif %}
         <!--    <p>Slug: {{trip.slug}}</p>-->
             <p>Description: {{trip.content}}</p>
