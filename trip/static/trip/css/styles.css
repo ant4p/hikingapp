@@ -74,3 +74,11 @@ body {
 .footer {
   flex: 0 0 auto;
 }
+
+dropdown-item:hover {
+    background-color: #3A833A !Important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #3A833A !Important;
+}
