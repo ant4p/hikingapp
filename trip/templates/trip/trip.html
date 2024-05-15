@@ -25,6 +25,7 @@
         </div>
             <div class="col">
             <h2>{{ trip.title }}</h2>
+                <p></p>
             <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
 
                     {% if trip.user.avatar %}
@@ -41,6 +42,7 @@
                             <a class="link-read-post"><a href="{{ t.get_absolute_url }}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ t.tag }}</a>
                         {% endif %}
                     {% endfor %}
+                                <p></p>
             </div>
     </div>
 </div>
