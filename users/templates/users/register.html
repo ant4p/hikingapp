@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
     <div class="row">
          <div class="col">
-             <h4>Registration</h4>
+             <h4>{% translate 'Registration' %}</h4>
+             <p> </p>
                 <form method="post">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}" />
@@ -14,8 +16,9 @@
                     <p><label class="form-label">{{ f.label }}</label>{{ f }}</p>
                     <div class="form-error">{{ f.errors }}</div>
                     {% endfor %}
-                    <p><button type="submit" class="btn btn-success">Registration</button> </p>
+                    <p><button type="submit" class="btn btn-success">{% translate 'Registration' %}</button> </p>
                 </form>
+             <p> </p>
          </div>
     </div>
 </div>

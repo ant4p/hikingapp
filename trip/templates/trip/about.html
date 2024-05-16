@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
     <div class="row">
          <div class="col">
-             <h4>Information about HikingUP!</h4>
-                <p>This web app for hikers and travelers,</p>
-                <p>where you make save trips and travels.</p>
+             <h4>{% translate 'Information about site Hikingapp' %}</h4>
+                <p> </p>
+                <p>{% blocktranslate %}This web app for hikers and travelers,
+                    where you make save trips and travels.{% endblocktranslate %}</p>
+                <p> </p>
          </div>
     </div>
 </div>

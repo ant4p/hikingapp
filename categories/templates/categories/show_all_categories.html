@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
     <div class="row">
          <div class="col">
-             <h4>Categories</h4>
-             <p></p>
+             <h4>{% translate 'Categories' %}</h4>
+             <p> </p>
                 {% for c in categories %}
                      <form action="{{c.get_absolute_url}}" method="get">
                          <p><button type="submit" class="btn btn-outline-dark">{{ c.title }}</button></p>
                      </form>
                 {% endfor %}
+             <p> </p>
          </div>
     </div>
 </div>

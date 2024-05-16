@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block breadcrumbs %}
 
@@ -6,9 +7,9 @@
     <div class="row">
         <div class="col">
     <p><a href="{% url 'edit' trip.slug %}"
-          class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Edit Trip</a>
+          class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{% translate 'Edit Trip' %}</a>
         | <a href="{% url 'delete' trip.slug %}"
-         class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete Trip</a> </p>
+         class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{% translate 'Delete Trip' %}</a> </p>
         </div>
     </div>
 </div>
@@ -25,17 +26,17 @@
         </div>
             <div class="col">
             <h2>{{ trip.title }}</h2>
-                <p></p>
-            <p>Category: {{ trip.category }} | Date: {{ trip.date }}</p>
+                <p> </p>
+            <p>{% translate 'Category' %}: {{ trip.category }} | {% translate 'Date' %}: {{ trip.date }}</p>
 
                     {% if trip.user.avatar %}
-                        <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""> Author: <a class="link-read-post"><a
+                        <p><img src="{{ trip.user.avatar|thumbnail_url:'icon' }}" alt=""> {% translate 'Author' %}: <a class="link-read-post"><a
                                 href="{% url 'users:user_trips' trip.user %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> {{trip.user}}</a>
                     {% else %}
-                        Author: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> {{trip.user}}</a>
+                        {% translate 'Author' %}: <a class="link-read-post"><a href="{% url 'users:user_trips' trip.user %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> {{trip.user}}</a>
                     {% endif %}
         <!--    <p>Slug: {{trip.slug}}</p>-->
-            <p>Description: {{trip.content}}</p>
+            <p>{% translate 'Description' %}: {{trip.content}}</p>
 
                     {% for t in trip.tag.all %}
                         {% if t.tag %}

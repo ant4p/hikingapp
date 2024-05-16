@@ -69,9 +69,10 @@
           </li>
         </ul>
     </div>
+
       <form action="{% url 'search' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get">
-          <input class="form-control" type="search" name="search" placeholder="Search trip..."  aria-label="Search">
-        </form>
+          <input class="form-control" type="search" name="search" placeholder={% translate 'search trip...' %}  aria-label="Search">
+      </form>
 
       {% if user.is_authenticated %}
 

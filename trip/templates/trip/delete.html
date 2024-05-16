@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
     <div class="row">
          <div class="col">
-             <h4>Delete trip</h4>
+             <h4>{% translate 'Delete trip' %}</h4>
+             <p> </p>
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <p>Are you sure you want to delete "{{ object }}"?</p>
-                    <input type="submit" class="btn btn-success" value="Confirm">
+                    <p>{% blocktranslate %}Are you sure you want to delete "{{ object }}"?{% endblocktranslate %}</p>
+                    <input type="submit" class="btn btn-success" value={% translate 'Confirm' %}>
                 </form>
+             <p> </p>
          </div>
     </div>
 </div>

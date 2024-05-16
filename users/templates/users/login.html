@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -6,7 +7,8 @@
 <div class="container">
     <div class="row">
          <div class="col">
-             <h4>Authorization</h4>
+             <h4>{% translate 'Authorization' %}</h4>
+             <p> </p>
                 <form method="post">
                     <input type="hidden" name="next" value="{{ next }}" />
                     {% csrf_token %}
@@ -17,9 +19,10 @@
                     {% endfor %}
                     <p><a href="{% url 'users:password_reset' %}"
                           class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                        Forgot your password?</a></p>
-                    <p><button type="submit" class="btn btn-success">Enter</button></p>
+                        {% translate 'Forgot your password?' %}</a></p>
+                    <p><button type="submit" class="btn btn-success">{% translate 'Enter' %}</button></p>
                 </form>
+             <p> </p>
          </div>
     </div>
 </div>
@@ -31,7 +34,7 @@
 <!--            <p><a href='{% url "social:begin" "google-oauth2" %}'>Sign in with Google</a></p>-->
             <p><a href='{% url "social:begin" "github" %}'
                   class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                Sign in with GitHub</a></p>
+                {% translate 'Sign in with GitHub' %}</a></p>
         </div>
     </div>
 </div>

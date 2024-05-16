@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
     <div class="row">
          <div class="col">
-             <h4>Error of server</h4>
-                <p>The requested page does not exist.</p>
+             <h4>{% translate 'Error of server' %}</h4>
+                <p> </p>
+                <p>{% blocktranslate %}The requested page does not exist.{% endblocktranslate %}</p>
+                <p> </p>
 
          </div>
     </div>

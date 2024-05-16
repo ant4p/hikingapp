@@ -10,7 +10,7 @@ from trip.models import Trip
 from trip.utils import generate_unique_slug, DataMixin
 
 
-class AboutHikingapp(LoginRequiredMixin, TemplateView):
+class AboutHikingapp(TemplateView):
     template_name = 'trip/about.html'
 
 

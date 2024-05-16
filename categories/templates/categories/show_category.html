@@ -1,49 +1,49 @@
-{% extends 'base.html' %}
+<!--{% extends 'base.html' %}-->
 
-{% block content %}
-{% load thumbnail %}
+<!--{% block content %}-->
+<!--{% load thumbnail %}-->
 
-{% for t in trips %}
-    <p>Name: {{t.title}}</p>
-    <p>Slug: {{t.slug}}</p>
-    <p>CATEgORY: {{t.category}}</p>
-    <p>Content: {{t.content}}</p>
+<!--{% for t in trips %}-->
+<!--    <p>Name: {{t.title}}</p>-->
+<!--    <p>Slug: {{t.slug}}</p>-->
+<!--    <p>CATEgORY: {{t.category}}</p>-->
+<!--    <p>Content: {{t.content}}</p>-->
 
-    {% if t.title_photo %}
-            <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>
-<!--            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>-->
-    {% endif %}
-{% endfor %}
+<!--    {% if t.title_photo %}-->
+<!--            <p><img src="{{ t.title_photo|thumbnail_url:'title_photo' }}" alt=""></p>-->
+<!--&lt;!&ndash;            <p><img src="{{ t.title_photo.url }}" class="img" width="480" height="330"></p>&ndash;&gt;-->
+<!--    {% endif %}-->
+<!--{% endfor %}-->
 
-{% endblock %}
+<!--{% endblock %}-->
 
-{% block navigation %}
-{% if page_obj.has_other_pages %}
-<nav class="list-pages">
-    <ul>
-		{% if page_obj.has_previous %}
-		<li class="page-num">
-			<a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
-		</li>
-		{% endif %}
+<!--{% block navigation %}-->
+<!--{% if page_obj.has_other_pages %}-->
+<!--<nav class="list-pages">-->
+<!--    <ul>-->
+<!--		{% if page_obj.has_previous %}-->
+<!--		<li class="page-num">-->
+<!--			<a href="?page={{ page_obj.previous_page_number }}">&lt;</a>-->
+<!--		</li>-->
+<!--		{% endif %}-->
 
-        {% for p in paginator.page_range %}
-		{% if page_obj.number == p %}
-		<li class="page-num page-num-selected">{{ p }}</li>
-		{% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-        <li class="page-num">
-            <a href="?page={{ p }}">{{ p }}</a>
-        </li>
-		{% endif %}
-        {% endfor %}
+<!--        {% for p in paginator.page_range %}-->
+<!--		{% if page_obj.number == p %}-->
+<!--		<li class="page-num page-num-selected">{{ p }}</li>-->
+<!--		{% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}-->
+<!--        <li class="page-num">-->
+<!--            <a href="?page={{ p }}">{{ p }}</a>-->
+<!--        </li>-->
+<!--		{% endif %}-->
+<!--        {% endfor %}-->
 
-		{% if page_obj.has_next %}
-		<li class="page-num">
-			<a href="?page={{ page_obj.next_page_number }}">&gt;</a>
-		</li>
-		{% endif %}
+<!--		{% if page_obj.has_next %}-->
+<!--		<li class="page-num">-->
+<!--			<a href="?page={{ page_obj.next_page_number }}">&gt;</a>-->
+<!--		</li>-->
+<!--		{% endif %}-->
 
-    </ul>
-</nav>
-{% endif %}
-{% endblock %}
+<!--    </ul>-->
+<!--</nav>-->
+<!--{% endif %}-->
+<!--{% endblock %}-->

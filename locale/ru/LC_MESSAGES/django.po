@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 16:17+0300\n"
+"POT-Creation-Date: 2024-05-16 18:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,51 +20,71 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\templates\base.html:41 .\templates\base.html:82
+#: .\categories\templates\categories\show_all_categories.html:9
+#: .\templates\base.html:48
+msgid "Categories"
+msgstr "Категории"
+
+#: .\images\templates\images\gallery.html:10 .\templates\base.html:51
+msgid "Gallery"
+msgstr "Галерея"
+
+#: .\images\templates\images\gallery.html:13
+msgid "Refresh"
+msgstr "Обновить"
+
+#: .\tags\templates\tags\add_tag.html:9
+#: .\tags\templates\tags\show_all_tags.html:12
+msgid "Add tag"
+msgstr "Добавить тэг"
+
+#: .\tags\templates\tags\add_tag.html:18 .\trip\templates\trip\add.html:18
+msgid "Submit"
+msgstr "Отправить"
+
+#: .\tags\templates\tags\show_all_tags.html:9 .\templates\base.html:47
+#: .\trip\templates\trip\index.html:27
+msgid "Tags"
+msgstr "Тэги"
+
+#: .\templates\base.html:41 .\templates\base.html:83
 msgid "New trip"
 msgstr "Добавить"
 
 #: .\templates\base.html:45
 msgid "Order by"
-msgstr "Сортировать"
-
-#: .\templates\base.html:47
-msgid "Tags"
-msgstr "Тэги"
-
-#: .\templates\base.html:48
-msgid "Categories"
-msgstr "Категории"
-
-#: .\templates\base.html:51
-msgid "Gallery"
-msgstr "Галерея"
+msgstr "Выбрать"
 
 #: .\templates\base.html:52
 msgid "About"
 msgstr "О сайте"
 
-#: .\templates\base.html:83
+#: .\templates\base.html:74
+msgid "search trip..."
+msgstr "Поиск поездки"
+
+#: .\templates\base.html:84
 msgid "My trips"
 msgstr "Мои путешествия"
 
-#: .\templates\base.html:84
+#: .\templates\base.html:85
 msgid "Profile"
 msgstr "Профиль"
 
-#: .\templates\base.html:89
+#: .\templates\base.html:90
 msgid "Exit"
 msgstr "Выход"
 
-#: .\templates\base.html:97
+#: .\templates\base.html:98
 msgid "Login"
 msgstr "Вход"
 
-#: .\templates\base.html:98
+#: .\templates\base.html:99 .\users\templates\users\register.html:9
+#: .\users\templates\users\register.html:19
 msgid "Registration"
 msgstr "Регистрация"
 
-#: .\templates\base.html:135
+#: .\templates\base.html:136
 msgid "Terms of use"
 msgstr "Правила пользования сайтом"
 
@@ -72,33 +92,186 @@ msgstr "Правила пользования сайтом"
 msgid "Access error"
 msgstr "Ошибка доступа"
 
-#: .\trip\templates\trip\403_csrf.html:10
+#: .\trip\templates\trip\403_csrf.html:11
 msgid ""
 "This trip was created by another user.\n"
 "                    You do not have rights to change or delete a trip."
-msgstr "Это путешествие создано другим пользователем.\n"
+msgstr ""
+"Это путешествие создано другим пользователем.\n"
 "                    У вас нет прав менять или редактировать поездку."
 
-#: .\users\templates\users\password_reset_email.html:2
+#: .\trip\templates\trip\404.html:9
+msgid "Page not found"
+msgstr "Страница не найдена"
+
+#: .\trip\templates\trip\404.html:11 .\trip\templates\trip\500.html:11
+msgid "The requested page does not exist."
+msgstr "Запрошенная страница не существует."
+
+#: .\trip\templates\trip\500.html:9
+msgid "Error of server"
+msgstr "Ошибка сервера"
+
+#: .\trip\templates\trip\about.html:9
+msgid "Information about site Hikingapp"
+msgstr "Информация о сайте Hikingapp"
+
+#: .\trip\templates\trip\about.html:11
+msgid ""
+"This web app for hikers and travelers,\n"
+"                    where you make save trips and travels."
+msgstr ""
+"Это веб приложение для походников и путешественников,\n"
+"                    где вы можете сохранять поездки и путешествия."
+
+#: .\trip\templates\trip\add.html:9
+msgid "Edit trip"
+msgstr "Редактирование"
+
+#: .\trip\templates\trip\delete.html:8
+msgid "Delete trip"
+msgstr "Удалить"
+
+#: .\trip\templates\trip\delete.html:12
+#, python-format
+msgid "Are you sure you want to delete \"%(object)s\"?"
+msgstr "Вы действительно хотите удалить \"%(object)s\"?"
+
+#: .\trip\templates\trip\delete.html:13
+msgid "Confirm"
+msgstr "Применить"
+
+#: .\trip\templates\trip\index.html:23 .\trip\templates\trip\trip.html:30
+msgid "Category"
+msgstr "Категория"
+
+#: .\trip\templates\trip\index.html:23 .\trip\templates\trip\trip.html:30
+msgid "Date"
+msgstr "Дата"
+
+#: .\trip\templates\trip\index.html:24 .\trip\templates\trip\trip.html:33
+#: .\trip\templates\trip\trip.html:36
+msgid "Author"
+msgstr "Автор"
+
+#: .\trip\templates\trip\trip.html:10
+msgid "Edit Trip"
+msgstr "Редактирование"
+
+#: .\trip\templates\trip\trip.html:12
+msgid "Delete Trip"
+msgstr "Удалить"
+
+#: .\trip\templates\trip\trip.html:39
+msgid "Description"
+msgstr "Описание"
+
+#: .\users\templates\users\login.html:10
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: .\users\templates\users\login.html:22
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#: .\users\templates\users\login.html:23
+msgid "Enter"
+msgstr "Войти"
+
+#: .\users\templates\users\login.html:37
+msgid "Sign in with GitHub"
+msgstr "Войти с помощью GitHub"
+
+#: .\users\templates\users\password_change.html:9
+#: .\users\templates\users\password_change.html:19
+#: .\users\templates\users\profile.html:29
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: .\users\templates\users\password_change_done.html:9
+#: .\users\templates\users\password_reset_complete.html:9
+msgid "Password successfully changed"
+msgstr "Пароль успешно изменён"
+
+#: .\users\templates\users\password_change_done.html:11
+msgid "You have successfully changed your password."
+msgstr "Вы успешно изменили ваш пароль."
+
+#: .\users\templates\users\password_change_done.html:12
+msgid "Go to Profile."
+msgstr "перейти в Профиль"
+
+#: .\users\templates\users\password_reset.html:9
+#: .\users\templates\users\password_reset_done.html:9
+msgid "Reset password"
+msgstr "Сбросить пароль"
+
+#: .\users\templates\users\password_reset.html:18
+msgid "Reset to E-mail"
+msgstr "Сбросить по E-mail"
+
+#: .\users\templates\users\password_reset_complete.html:11
+msgid "Reset password change is successful. Use new password for "
+msgstr "Сброс пароля прошёл успешно. Используйте новый пароль для"
+
+#: .\users\templates\users\password_reset_complete.html:12
+msgid "enter in a system."
+msgstr "входа в систему."
+
+#: .\users\templates\users\password_reset_confirm.html:9
+msgid "New password"
+msgstr "Новый пароль"
+
+#: .\users\templates\users\password_reset_confirm.html:18
+#: .\users\templates\users\profile.html:22
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\users\templates\users\password_reset_done.html:11
+msgid ""
+"We’ve emailed you instructions for setting your password,\n"
+"                    if an account exists with the email you entered.\n"
+"                    You should receive them shortly."
+msgstr ""
+"Мы отправили вам по электронной почте инструкции по установке пароля,\n"
+"                    если учетная запись с указанным вами адресом электронной "
+"почты существует.\n"
+"                    Вы получите их в ближайшее время."
+
+#: .\users\templates\users\password_reset_done.html:14
+msgid ""
+"If you don’t receive an email,\n"
+"                    please make sure you’ve entered the address you "
+"registered with,\n"
+"                    and check your spam folder."
+msgstr ""
+"Если вы не получили электронное письмо,\n"
+"                    пожалуйста, убедитесь, что вы правильно ввели адрес "
+"электронной почты, указанной при регистрации,\n"
+"                   и проверьте папку со спамом."
+
+#: .\users\templates\users\password_reset_email.html:3
 #, python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
 msgstr ""
+"Вы получили это письмо, потому что запросили сброс пароля для вашей учётной "
+"записи пользователя %(site_name)s."
 
-#: .\users\templates\users\password_reset_email.html:4
+#: .\users\templates\users\password_reset_email.html:5
 msgid "Please go to the following page and choose a new password:"
-msgstr ""
+msgstr "Пожалуйста, перейдите на следующую страницу и выберите новый пароль:"
 
-#: .\users\templates\users\password_reset_email.html:8
+#: .\users\templates\users\password_reset_email.html:9
 msgid "Your username, in case you’ve forgotten:"
-msgstr ""
+msgstr "Ваше имя пользователя, если вы забыли:"
 
-#: .\users\templates\users\password_reset_email.html:10
+#: .\users\templates\users\password_reset_email.html:11
 msgid "Thanks for using our site!"
-msgstr ""
+msgstr "Спасибо за использование нашего сайта!"
 
-#: .\users\templates\users\password_reset_email.html:12
+#: .\users\templates\users\password_reset_email.html:13
 #, python-format
 msgid "The %(site_name)s team"
-msgstr ""
+msgstr "Команда %(site_name)s"
