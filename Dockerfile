@@ -6,6 +6,9 @@ COPY ./requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN apk update
+RUN apk add gettext
+
 COPY . .
 
 EXPOSE 8000
