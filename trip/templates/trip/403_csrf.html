@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
     <div class="row">
          <div class="col">
-             <h4>Access error</h4>
-                <p>This trip was created by another user. You do not have rights to change or delete a trip.</p>
-
+             <h4>{% translate 'Access error' %}</h4>
+                <p>{% blocktranslate %}This trip was created by another user.
+                    You do not have rights to change or delete a trip.{% endblocktranslate %}</p>
          </div>
     </div>
 </div>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+
 
 {% endblock %}

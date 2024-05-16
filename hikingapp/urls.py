@@ -17,11 +17,22 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.i18n import i18n_patterns
 
 from hikingapp import settings
 from trip.views import handler_403, handler_404, handler_500
 
 urlpatterns = [
+    # path('admin/', admin.site.urls),
+    # path('', include('trip.urls')),
+    # path('category/', include('categories.urls', namespace='cat')),
+    # path('image/', include('images.urls', namespace='image')),
+    # path('tag/', include('tags.urls', namespace='tag')),
+    # path('users/', include('users.urls', namespace='users')),
+    # path('social/', include('social_django.urls', namespace='social')),
+]
+urlpatterns += i18n_patterns(
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('', include('trip.urls')),
     path('category/', include('categories.urls', namespace='cat')),
@@ -29,8 +40,7 @@ urlpatterns = [
     path('tag/', include('tags.urls', namespace='tag')),
     path('users/', include('users.urls', namespace='users')),
     path('social/', include('social_django.urls', namespace='social')),
-]
-
+)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += [path('__debug__/', include('debug_toolbar.urls')),]
