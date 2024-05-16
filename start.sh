@@ -1,10 +1,6 @@
 #!/bin/sh
 
-sleep 5
-
-apt install gettext
-
-sleep 15
+sleep 10
 
 python manage.py migrate
 python manage.py collectstatic --noinput
