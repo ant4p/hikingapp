@@ -24,7 +24,7 @@ from trip.views import handler_403, handler_404, handler_500
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    # path('', include('trip.urls')),
+    path('', include('trip.urls')),
     # path('category/', include('categories.urls', namespace='cat')),
     # path('image/', include('images.urls', namespace='image')),
     # path('tag/', include('tags.urls', namespace='tag')),
