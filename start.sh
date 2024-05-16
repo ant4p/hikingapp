@@ -2,6 +2,8 @@
 
 sleep 10
 
+sudo apt-get install gettext
+
 python manage.py migrate
 python manage.py collectstatic --noinput
 python manage.py compilemessages
