@@ -2,7 +2,9 @@
 
 sleep 10
 
-sudo apt-get install gettext
+apt-get install gettext
+
+sleep 5
 
 python manage.py migrate
 python manage.py collectstatic --noinput
