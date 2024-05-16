@@ -1,7 +1,7 @@
 import datetime
-
+from django.utils.translation import gettext_lazy as _
 from django import forms
-from django.contrib.auth import get_user_model
+
 
 from images.forms import MultipleFileField
 from tags.forms import AddTagForm
@@ -22,14 +22,14 @@ class AddTripForm(forms.ModelForm):
         model = Trip
         # exclude = ['slug', 'user']
         fields = [
-            'title',
+            _('title'),
 
-            'date',
-            'title_photo',
-            'content',
-            'published',
-            'category',
-            'tag',
+            _('date'),
+            _('title_photo'),
+            _('content'),
+            _('published'),
+            _('category'),
+            _('tag'),
         ]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),

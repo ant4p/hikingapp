@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 18:20+0300\n"
+"POT-Creation-Date: 2024-05-16 20:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,6 +88,36 @@ msgstr "Регистрация"
 msgid "Terms of use"
 msgstr "Правила пользования сайтом"
 
+#: .\trip\forms.py:25
+msgid "title"
+msgstr "Заголовок"
+
+#: .\trip\forms.py:27
+msgid "date"
+msgstr "Дата"
+
+#: .\trip\forms.py:28
+msgid "title_photo"
+msgstr "Титульное фото"
+
+#: .\trip\forms.py:29
+msgid "content"
+msgstr "Контент"
+
+#: .\trip\forms.py:30
+msgid "published"
+msgstr "Опубликовано"
+
+#: .\trip\forms.py:31
+msgid "category"
+msgstr "Категория"
+
+#: .\trip\forms.py:32
+#, fuzzy
+#| msgid "Add tag"
+msgid "tag"
+msgstr "Добавить тэг"
+
 #: .\trip\templates\trip\403_csrf.html:9
 msgid "Access error"
 msgstr "Ошибка доступа"
@@ -166,6 +196,80 @@ msgstr "Удалить"
 msgid "Description"
 msgstr "Описание"
 
+#: .\users\forms.py:10 .\users\models.py:22
+msgid "birthday"
+msgstr "День рождения"
+
+#: .\users\forms.py:31 .\users\forms.py:43
+msgid "username"
+msgstr "Имя пользователя"
+
+#: .\users\forms.py:32
+msgid "password"
+msgstr "Новый пароль"
+
+#: .\users\forms.py:37
+#, fuzzy
+#| msgid "password"
+msgid "Password"
+msgstr "Новый пароль"
+
+#: .\users\forms.py:38
+msgid "Repeat password"
+msgstr "Повторить пароль"
+
+#: .\users\forms.py:44
+msgid "email"
+msgstr "E-mail"
+
+#: .\users\forms.py:45
+msgid "password1"
+msgstr "Новый пароль"
+
+#: .\users\forms.py:46
+#, fuzzy
+#| msgid "New password"
+msgid "password2"
+msgstr "Новый пароль повторить"
+
+#: .\users\forms.py:57
+#, fuzzy
+#| msgid "old_password"
+msgid "Old password"
+msgstr "Старый пароль"
+
+#: .\users\forms.py:59 .\users\templates\users\password_reset_confirm.html:9
+msgid "New password"
+msgstr "Новый пароль"
+
+#: .\users\forms.py:61
+msgid "Repeat new password"
+msgstr "Новый пароль повторить"
+
+#: .\users\models.py:15
+msgid "Undecided"
+msgstr "Не определено"
+
+#: .\users\models.py:16
+msgid "Male"
+msgstr "Мужской"
+
+#: .\users\models.py:17
+msgid "Female"
+msgstr "Женский"
+
+#: .\users\models.py:18
+msgid "Attack Helicopter"
+msgstr "Боевой вертолёт"
+
+#: .\users\models.py:21
+msgid "avatar"
+msgstr "Аватар"
+
+#: .\users\models.py:23
+msgid "gender"
+msgstr "Пол"
+
 #: .\users\templates\users\login.html:10
 msgid "Authorization"
 msgstr "Авторизация"
@@ -217,10 +321,6 @@ msgstr "Сброс пароля прошёл успешно. Используй�
 #: .\users\templates\users\password_reset_complete.html:12
 msgid "enter in a system."
 msgstr "входа в систему."
-
-#: .\users\templates\users\password_reset_confirm.html:9
-msgid "New password"
-msgstr "Новый пароль"
 
 #: .\users\templates\users\password_reset_confirm.html:18
 #: .\users\templates\users\profile.html:22
@@ -275,3 +375,15 @@ msgstr "Спасибо за использование нашего сайта!"
 #, python-format
 msgid "The %(site_name)s team"
 msgstr "Команда %(site_name)s"
+
+#~ msgid "first_name"
+#~ msgstr "Имя"
+
+#~ msgid "last_name"
+#~ msgstr "Фамилия"
+
+#~ msgid "new_password1"
+#~ msgstr "Новый пароль"
+
+#~ msgid "new_password2"
+#~ msgstr "Новый пароль повторить"
