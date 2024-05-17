@@ -40,10 +40,10 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = [
-            _('username'),
-            _('email'),
-            _('password1'),
-            _('password2'),
+            'username',
+            'email',
+            'password1',
+            'password2',
         ]
 
     def clean_email(self):

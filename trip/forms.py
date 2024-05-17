@@ -9,11 +9,12 @@ from trip.models import Trip
 
 
 class AddTripForm(forms.ModelForm):
-    image = MultipleFileField(required=False)
+    image = MultipleFileField(label=_('image'), required=False)
     # slug = forms.CharField(required=False, widget=forms.HiddenInput())
 
     year = datetime.date.today().year
-    date = forms.DateField(widget=forms.SelectDateWidget(years=tuple(range(year - 5, year + 3))))
+    date = forms.DateField(label=_('date'),
+                           widget=forms.SelectDateWidget(years=tuple(range(year - 5, year + 3))))
 
     tag = AddTagForm
     # user = forms.CharField(required=False, widget=forms.HiddenInput())
@@ -22,14 +23,14 @@ class AddTripForm(forms.ModelForm):
         model = Trip
         # exclude = ['slug', 'user']
         fields = [
-            _('title'),
+            'title',
 
-            _('date'),
-            _('title_photo'),
-            _('content'),
-            _('published'),
-            _('category'),
-            _('tag'),
+            'date',
+            'title_photo',
+            'content',
+            'published',
+            'category',
+            'tag',
         ]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
