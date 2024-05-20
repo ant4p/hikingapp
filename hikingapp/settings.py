@@ -251,11 +251,9 @@ THUMBNAIL_ALIASES = {
         },
         'title_photo_into_trip': {
             'size': (650, 550),
-            'crop': 'smart',
         },
         'gallery': {
             'size': (530, 380),
-            'crop': 'smart',
         },
     },
     'trip.Trip.title_photo': {
@@ -267,7 +265,6 @@ THUMBNAIL_ALIASES = {
     'images.Image.image': {
         'image': {
             'size': (1200, 768),
-            # 'crop': 'smart',
         },
     },
 }
