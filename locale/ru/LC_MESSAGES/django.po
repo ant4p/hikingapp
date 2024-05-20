@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-17 13:05+0300\n"
+"POT-Creation-Date: 2024-05-20 17:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,7 +101,7 @@ msgid "Title"
 msgstr "Заголовок"
 
 #: .\trip\models.py:16 .\trip\templates\trip\index.html:23
-#: .\trip\templates\trip\trip.html:30
+#: .\trip\templates\trip\trip.html:32
 msgid "Date"
 msgstr "Дата"
 
@@ -109,7 +109,7 @@ msgstr "Дата"
 msgid "title_photo"
 msgstr "Титульное фото"
 
-#: .\trip\models.py:18 .\trip\templates\trip\trip.html:39
+#: .\trip\models.py:18 .\trip\templates\trip\trip.html:41
 msgid "Description"
 msgstr "Описание"
 
@@ -169,21 +169,21 @@ msgid ""
 msgstr ""
 "\n"
 "                    <p>Дорогой друг.</p>\n"
-"                     <p>Добро пожаловать на страницы сайта hikingapp.ru</"
-"p>\n"
-"                     <p>Это веб приложение создано для людей которые активно "
-" проводят свое свободное время или стремятся к этому.</p>\n"
-"                     <p>Если ты ездишь в поездки, ходишь в походы или просто на прогулки, "
-" а так же хочешь поделиться своими впечатлениями \n"
+"                     <p>Добро пожаловать на страницы сайта hikingapp.ru</p>\n"
+"                     <p>Это веб приложение создано для людей которые "
+"активно  проводят свое свободное время или стремятся к этому.</p>\n"
+"                     <p>Если ты ездишь в поездки, ходишь в походы или просто "
+"на прогулки,  а так же хочешь поделиться своими впечатлениями \n"
 "                         - тогда этот сайт для тебя!</p>\n"
-"                     <p>После регистрации на сайте будет доступно создание, "
-"  редактирование и удаление своих поездок.</p>\n"
+"                     <p>После регистрации на сайте будет доступно "
+"создание,   редактирование и удаление своих поездок.</p>\n"
 "                     <p>Добавление тэгов. Доступ к личному кабинету.</p>\n"
-"                     <p>Так же на данный момент доступна авторизация через GitHub."
-"</p>\n"
-"                     <p>Для вашего удобства сайт доступен на русском и английском языках.</p>\n"
-"                     <p>Все вопросы, пожелания и предложения принимаются "
-" на почту  info@hikingapp.ru.</p>\n"
+"                     <p>Так же на данный момент доступна авторизация через "
+"GitHub.</p>\n"
+"                     <p>Для вашего удобства сайт доступен на русском и "
+"английском языках.</p>\n"
+"                     <p>Все вопросы, пожелания и предложения принимаются  на "
+"почту  info@hikingapp.ru.</p>\n"
 "                    "
 
 #: .\trip\templates\trip\add.html:9
@@ -203,12 +203,12 @@ msgstr "Вы действительно хотите удалить \"%(object)s
 msgid "Confirm"
 msgstr "Применить"
 
-#: .\trip\templates\trip\index.html:23 .\trip\templates\trip\trip.html:30
+#: .\trip\templates\trip\index.html:23 .\trip\templates\trip\trip.html:32
 msgid "Category"
 msgstr "Категория"
 
-#: .\trip\templates\trip\index.html:24 .\trip\templates\trip\trip.html:33
-#: .\trip\templates\trip\trip.html:36
+#: .\trip\templates\trip\index.html:24 .\trip\templates\trip\trip.html:35
+#: .\trip\templates\trip\trip.html:38
 msgid "Author"
 msgstr "Автор"
 
@@ -219,6 +219,10 @@ msgstr "Редактирование"
 #: .\trip\templates\trip\trip.html:12
 msgid "Delete Trip"
 msgstr "Удалить"
+
+#: .\trip\templates\trip\trip.html:13
+msgid "Back"
+msgstr "Назад"
 
 #: .\users\forms.py:10 .\users\models.py:22
 msgid "birthday"
