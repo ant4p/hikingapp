@@ -4,7 +4,7 @@ WORKDIR /hikingapp
 
 COPY ./requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && pip install gunicorn && pip install psycopg2-binary
 
 RUN apt update
 RUN apt install gettext -y
