@@ -57,6 +57,7 @@ services:
       - acme:/etc/acme.sh
       - certs:/etc/nginx/certs
 
+
 volumes:
   static:
   media:
