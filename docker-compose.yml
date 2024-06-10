@@ -30,7 +30,7 @@ services:
   nginx:
     build:
       context: ./nginx/
-    container_name: NGINX_jw
+    container_name: NGINX
     restart: always
     volumes:
       - static:/hikingapp/static
